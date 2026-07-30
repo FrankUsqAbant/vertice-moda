@@ -3,60 +3,73 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VÉRTICE — Moda Masculina</title>
-<meta name="description" content="VÉRTICE — Ropa para el hombre contemporáneo. Diseño minimalista, calidad superior.">
+<title>JALCA — Moda Masculina desde Cajamarca</title>
+<meta name="description" content="JALCA — Ropa casual-elegante para el hombre joven. Inspirada en los paisajes de Cajamarca, Perú. Blazers, chompas de alpaca, camisas de lino.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #0D0D0D; --surface: #141414; --surface-light: #1C1C1C;
-  --border: rgba(255,255,255,0.06); --copper: #B87351; --copper-glow: rgba(184,115,81,0.3);
-  --white: #FFFFFF; --text: #E0E0E0; --text-dim: #808080; --text-muted: #505050;
-  --shadow: 0 4px 30px rgba(0,0,0,0.5); --radius: 4px; --max: 1200px;
+  --bg: #111110;
+  --surface: #181716;
+  --surface-light: #201E1C;
+  --border: rgba(255,255,255,0.05);
+  --terracota: #C47A5A;
+  --terracota-glow: rgba(196,122,90,0.25);
+  --clay: #B5653E;
+  --cream: #E8DDD0;
+  --cream-dim: rgba(232,221,208,0.6);
+  --white: #FFFFFF;
+  --text: #E0DDD8;
+  --text-dim: #908B85;
+  --text-muted: #5A5550;
+  --shadow: 0 4px 30px rgba(0,0,0,0.5);
+  --radius: 4px;
+  --max: 1200px;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; font-size: 16px; background: var(--bg); }
 body { font-family: 'Inter', system-ui, sans-serif; color: var(--text); background: var(--bg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
 
-.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(13,13,13,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(17,17,16,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
 .nav-inner { max-width: var(--max); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; height: 60px; }
-.logo { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--white); text-decoration: none; letter-spacing: 2px; }
-.logo span { color: var(--copper); }
+.logo { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--white); text-decoration: none; letter-spacing: 4px; }
+.logo span { color: var(--terracota); display: inline-block; transform: rotate(-8deg); }
 .nav-links { display: flex; gap: 40px; list-style: none; align-items: center; }
 .nav-links a { text-decoration: none; color: var(--text-dim); font-size: 0.75rem; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; transition: color 0.3s; }
 .nav-links a:hover { color: var(--white); }
-.nav-links a.cta { color: var(--copper); border: 1px solid var(--copper); padding: 8px 18px; border-radius: 2px; font-size: 0.7rem; transition: all 0.3s; }
-.nav-links a.cta:hover { background: var(--copper); color: var(--white); }
+.nav-links a.cta { color: var(--cream); border: 1px solid var(--terracota); padding: 8px 18px; border-radius: 2px; font-size: 0.7rem; transition: all 0.3s; }
+.nav-links a.cta:hover { background: var(--terracota); color: var(--white); }
 .menu-toggle { display: none; flex-direction: column; gap: 4px; cursor: pointer; background: none; border: none; }
 .menu-toggle span { display: block; width: 22px; height: 1.5px; background: var(--white); transition: 0.3s; }
 
-.hero { min-height: 100vh; display: flex; align-items: center; background: linear-gradient(180deg, var(--bg) 0%, #111 50%, var(--bg) 100%); padding: 100px 32px 80px; }
+.hero { min-height: 100vh; display: flex; align-items: center; background: linear-gradient(180deg, #111110 0%, #181410 50%, #111110 100%); padding: 100px 32px 80px; }
 .hero-grid { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; width: 100%; }
 .hero-text { position: relative; z-index: 2; }
-.hero-tag { display: inline-block; font-size: 0.65rem; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--copper); margin-bottom: 24px; padding-bottom: 12px; border-bottom: 1px solid var(--copper); }
+.hero-location { display: inline-flex; align-items: center; gap: 6px; font-size: 0.65rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--terracota); margin-bottom: 24px; padding-bottom: 12px; border-bottom: 1px solid var(--terracota); }
 .hero h1 { font-family: 'Syne', sans-serif; font-size: clamp(3rem, 6vw, 5rem); font-weight: 800; line-height: 0.95; letter-spacing: -0.5px; color: var(--white); margin-bottom: 20px; text-transform: uppercase; }
-.hero h1 em { font-style: normal; color: var(--copper); }
-.hero-sub { font-size: 1rem; color: var(--text-dim); max-width: 400px; line-height: 1.7; margin-bottom: 36px; }
-.hero-cta { display: inline-flex; align-items: center; gap: 12px; padding: 14px 36px; background: var(--copper); color: var(--white); text-decoration: none; font-weight: 600; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; transition: all 0.3s; }
-.hero-cta:hover { background: #C98560; box-shadow: 0 4px 24px var(--copper-glow); }
+.hero h1 em { font-style: normal; color: var(--terracota); }
+.hero-sub { font-size: 1rem; color: var(--text-dim); max-width: 420px; line-height: 1.7; margin-bottom: 36px; }
+.hero-cta { display: inline-flex; align-items: center; gap: 12px; padding: 14px 36px; background: var(--terracota); color: var(--white); text-decoration: none; font-weight: 600; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; transition: all 0.3s; }
+.hero-cta:hover { background: var(--clay); box-shadow: 0 4px 24px var(--terracota-glow); }
 .hero-image { position: relative; aspect-ratio: 3/4; max-height: 80vh; background-size: cover; background-position: center top; }
 .hero-image::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 60%, var(--bg) 100%); }
 
 .section { padding: 100px 32px; }
 .section-dark { background: var(--surface); }
 .section-inner { max-width: var(--max); margin: 0 auto; }
-.section-label { font-size: 0.65rem; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--copper); margin-bottom: 12px; }
+.section-label { font-size: 0.65rem; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--terracota); margin-bottom: 12px; }
 .section-title { font-family: 'Syne', sans-serif; font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.2px; color: var(--white); margin-bottom: 14px; text-transform: uppercase; }
 .section-desc { font-size: 0.95rem; color: var(--text-dim); max-width: 480px; line-height: 1.7; margin-bottom: 48px; }
 
 .cats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .cat-card { position: relative; aspect-ratio: 3/4; overflow: hidden; cursor: pointer; background-size: cover; background-position: center; }
-.cat-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.8) 100%); transition: opacity 0.3s; }
-.cat-card:hover::after { opacity: 0.7; }
+.cat-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.85) 100%); transition: opacity 0.3s; }
+.cat-card:hover::after { opacity: 0.75; }
 .cat-label { position: absolute; bottom: 24px; left: 24px; z-index: 2; }
-.cat-label h3 { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 600; color: var(--white); text-transform: uppercase; letter-spacing: 1px; }
-.cat-label span { font-size: 0.7rem; color: var(--copper); letter-spacing: 2px; text-transform: uppercase; }
+.cat-label h3 { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 600; color: var(--white); text-transform: uppercase; letter-spacing: 1px; }
+.cat-label span { font-size: 0.7rem; color: var(--terracota); letter-spacing: 2px; text-transform: uppercase; }
+.cat-label small { display: block; font-size: 0.7rem; color: var(--text-dim); margin-top: 4px; letter-spacing: 0; text-transform: none; font-weight: 400; }
 
 .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
 .product-card { background: var(--surface-light); overflow: hidden; transition: transform 0.3s; }
@@ -64,7 +77,7 @@ body { font-family: 'Inter', system-ui, sans-serif; color: var(--text); backgrou
 .product-img { aspect-ratio: 3/4; background-size: cover; background-position: center; }
 .product-info { padding: 20px; }
 .product-info h3 { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 600; color: var(--white); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
-.product-info .price { font-size: 0.9rem; color: var(--copper); font-weight: 500; }
+.product-info .price { font-size: 0.9rem; color: var(--terracota); font-weight: 500; }
 .product-tag { display: inline-block; font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
 
 .lookbook { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
@@ -80,14 +93,14 @@ body { font-family: 'Inter', system-ui, sans-serif; color: var(--text); backgrou
 .brand-text p { color: var(--text-dim); line-height: 1.8; margin-bottom: 16px; font-size: 0.95rem; }
 .brand-features { list-style: none; margin-top: 24px; }
 .brand-features li { padding: 12px 0; border-bottom: 1px solid var(--border); color: var(--text-dim); font-size: 0.85rem; display: flex; gap: 10px; align-items: center; }
-.brand-features li::before { content: '—'; color: var(--copper); font-weight: bold; }
+.brand-features li::before { content: '—'; color: var(--terracota); font-weight: bold; }
 
 .newsletter { text-align: center; padding: 80px 32px; background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 .newsletter-form { display: flex; gap: 8px; max-width: 420px; margin: 0 auto; }
 .newsletter-form input { flex: 1; padding: 14px 18px; background: var(--bg); border: 1px solid var(--border); color: var(--white); font-family: 'Inter', sans-serif; font-size: 0.9rem; }
-.newsletter-form input:focus { outline: none; border-color: var(--copper); }
-.newsletter-form button { padding: 14px 28px; background: var(--copper); color: var(--white); border: none; font-weight: 600; font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; transition: 0.3s; white-space: nowrap; }
-.newsletter-form button:hover { background: #C98560; }
+.newsletter-form input:focus { outline: none; border-color: var(--terracota); }
+.newsletter-form button { padding: 14px 28px; background: var(--terracota); color: var(--white); border: none; font-weight: 600; font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; transition: 0.3s; white-space: nowrap; }
+.newsletter-form button:hover { background: var(--clay); }
 
 .footer { padding: 60px 32px 24px; background: var(--bg); border-top: 1px solid var(--border); }
 .footer-grid { max-width: var(--max); margin: 0 auto 40px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
@@ -97,8 +110,46 @@ body { font-family: 'Inter', system-ui, sans-serif; color: var(--text); backgrou
 .footer-col ul { list-style: none; }
 .footer-col ul li { margin-bottom: 8px; }
 .footer-col ul li a { color: var(--text-muted); text-decoration: none; font-size: 0.8rem; transition: color 0.2s; }
-.footer-col ul li a:hover { color: var(--copper); }
+.footer-col ul li a:hover { color: var(--terracota); }
 .footer-bottom { max-width: var(--max); margin: 0 auto; padding-top: 20px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; flex-wrap: wrap; gap: 8px; }
+
+/* $10K UPGRADES */
+.modal-overlay { position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,0.92); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+.modal-content { background: var(--surface-light); max-width: 700px; width: 90%; max-height: 85vh; overflow-y: auto; display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--border); position: relative; }
+.modal-close { position: absolute; top: 12px; right: 12px; z-index: 3; background: none; border: 1px solid var(--border); color: var(--white); width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1.1rem; transition: 0.2s; }
+.modal-close:hover { border-color: var(--terracota); color: var(--terracota); }
+.modal-img { aspect-ratio: 3/4; background-size: cover; background-position: center; }
+.modal-details { padding: 32px; display: flex; flex-direction: column; justify-content: center; }
+.modal-details .product-tag { margin-bottom: 8px; }
+.modal-details h3 { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--white); text-transform: uppercase; margin-bottom: 8px; }
+.modal-details .price { font-size: 1.5rem; color: var(--terracota); font-weight: 600; margin-bottom: 12px; }
+.modal-details p { color: var(--text-dim); font-size: 0.85rem; line-height: 1.7; margin-bottom: 20px; }
+.size-select { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+.size-opt { padding: 8px 16px; border: 1px solid var(--border); background: none; color: var(--text-dim); cursor: pointer; font-size: 0.8rem; font-family: 'Inter', sans-serif; transition: 0.2s; text-transform: uppercase; }
+.size-opt:hover, .size-opt.active { border-color: var(--terracota); color: var(--terracota); }
+.modal-cta { width: 100%; padding: 14px; background: var(--terracota); color: var(--white); border: none; font-weight: 600; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; transition: 0.3s; margin-top: auto; }
+.modal-cta:hover { background: var(--clay); }
+
+.faq-list { max-width: 700px; }
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-q { width: 100%; background: none; border: none; color: var(--white); font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 600; padding: 20px 0; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; letter-spacing: 0.5px; text-transform: uppercase; }
+.faq-q span { font-size: 1.2rem; color: var(--terracota); transition: transform 0.3s; }
+.faq-item.open .faq-q span { transform: rotate(45deg); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; color: var(--text-dim); font-size: 0.9rem; line-height: 1.7; }
+.faq-item.open .faq-a { max-height: 200px; padding-bottom: 20px; }
+
+.size-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+.size-table th { text-align: left; padding: 12px; color: var(--terracota); font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; border-bottom: 1px solid var(--border); }
+.size-table td { padding: 12px; color: var(--text-dim); font-size: 0.85rem; border-bottom: 1px solid var(--border); }
+.size-table tr:hover td { color: var(--white); }
+
+.btt { position: fixed; bottom: 24px; right: 24px; z-index: 99; width: 44px; height: 44px; border-radius: 50%; background: var(--terracota); color: var(--white); border: none; cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: all 0.3s; box-shadow: 0 4px 16px rgba(0,0,0,0.4); }
+.btt.visible { opacity: 1; pointer-events: all; }
+.btt:hover { background: var(--clay); transform: translateY(-3px); }
+
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
 
 @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 .anim { animation: fadeUp 0.7s ease forwards; opacity: 0; }
@@ -118,73 +169,21 @@ body { font-family: 'Inter', system-ui, sans-serif; color: var(--text); backgrou
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .section { padding: 60px 20px; }
 }
-@media (max-width: 500px) {
-  .products-grid { grid-template-columns: 1fr; }
-  .footer-grid { grid-template-columns: 1fr; }
-  .newsletter-form { flex-direction: column; }
-}
+@media (max-width: 700px) { .modal-content { grid-template-columns: 1fr; } .modal-img { aspect-ratio: 16/9; } }
+@media (max-width: 500px) { .products-grid { grid-template-columns: 1fr; } .footer-grid { grid-template-columns: 1fr; } .newsletter-form { flex-direction: column; } }
 .nav.open .nav-links { display: flex; flex-direction: column; position: absolute; top: 60px; left: 0; right: 0; background: var(--bg); padding: 24px; gap: 16px; border-bottom: 1px solid var(--border); }
-@media (prefers-reduced-motion: reduce) { .anim { animation: none; opacity: 1; } * { transition-duration: 0.01ms !important; } }
-
-/* === $10K UPGRADES === */
-
-/* Quick-view Modal */
-.modal-overlay { position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,0.92); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
-.modal-overlay.open { opacity: 1; pointer-events: all; }
-.modal-content { background: var(--surface-light); max-width: 700px; width: 90%; max-height: 85vh; overflow-y: auto; display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--border); position: relative; }
-.modal-close { position: absolute; top: 12px; right: 12px; z-index: 3; background: none; border: 1px solid var(--border); color: var(--white); width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1.1rem; transition: 0.2s; }
-.modal-close:hover { border-color: var(--copper); color: var(--copper); }
-.modal-img { aspect-ratio: 3/4; background-size: cover; background-position: center; }
-.modal-details { padding: 32px; display: flex; flex-direction: column; justify-content: center; }
-.modal-details .product-tag { margin-bottom: 8px; }
-.modal-details h3 { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--white); text-transform: uppercase; margin-bottom: 8px; }
-.modal-details .price { font-size: 1.5rem; color: var(--copper); font-weight: 600; margin-bottom: 12px; }
-.modal-details p { color: var(--text-dim); font-size: 0.85rem; line-height: 1.7; margin-bottom: 20px; }
-.size-select { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
-.size-opt { padding: 8px 16px; border: 1px solid var(--border); background: none; color: var(--text-dim); cursor: pointer; font-size: 0.8rem; font-family: 'Inter', sans-serif; transition: 0.2s; text-transform: uppercase; }
-.size-opt:hover, .size-opt.active { border-color: var(--copper); color: var(--copper); }
-.modal-cta { width: 100%; padding: 14px; background: var(--copper); color: var(--white); border: none; font-weight: 600; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; transition: 0.3s; margin-top: auto; }
-.modal-cta:hover { background: #C98560; }
-
-/* FAQ Accordion */
-.faq-list { max-width: 700px; }
-.faq-item { border-bottom: 1px solid var(--border); }
-.faq-q { width: 100%; background: none; border: none; color: var(--white); font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 600; padding: 20px 0; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; letter-spacing: 0.5px; text-transform: uppercase; }
-.faq-q span { font-size: 1.2rem; color: var(--copper); transition: transform 0.3s; }
-.faq-item.open .faq-q span { transform: rotate(45deg); }
-.faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; color: var(--text-dim); font-size: 0.9rem; line-height: 1.7; }
-.faq-item.open .faq-a { max-height: 200px; padding-bottom: 20px; }
-
-/* Size Guide */
-.size-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
-.size-table th { text-align: left; padding: 12px; color: var(--copper); font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; border-bottom: 1px solid var(--border); }
-.size-table td { padding: 12px; color: var(--text-dim); font-size: 0.85rem; border-bottom: 1px solid var(--border); }
-.size-table tr:hover td { color: var(--white); }
-
-/* Back to Top */
-.btt { position: fixed; bottom: 24px; right: 24px; z-index: 99; width: 44px; height: 44px; border-radius: 50%; background: var(--copper); color: var(--white); border: none; cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: all 0.3s; box-shadow: 0 4px 16px rgba(0,0,0,0.4); }
-.btt.visible { opacity: 1; pointer-events: all; }
-.btt:hover { background: #C98560; transform: translateY(-3px); }
-
-/* Scroll-reveal */
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
-
-@media (max-width: 700px) {
-  .modal-content { grid-template-columns: 1fr; }
-  .modal-img { aspect-ratio: 16/9; }
-}
+@media (prefers-reduced-motion: reduce) { .anim, .reveal { animation: none; opacity: 1; } * { transition-duration: 0.01ms !important; } }
 </style>
 </head>
 <body>
 
 <nav class="nav" id="nav">
   <div class="nav-inner">
-    <a href="#" class="logo">VÉRTI<span>C</span>E</a>
+    <a href="#" class="logo">JAL<span>C</span>A</a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#coleccion">Colección</a></li>
       <li><a href="#lookbook">Lookbook</a></li>
-      <li><a href="#marca">La Marca</a></li>
+      <li><a href="#marca">Origen</a></li>
       <li><a href="#newsletter" class="cta">Acceso Anticipado</a></li>
     </ul>
     <button class="menu-toggle" id="menuToggle" aria-label="Menú"><span></span><span></span><span></span></button>
@@ -195,12 +194,12 @@ body { font-family: 'Inter', system-ui, sans-serif; color: var(--text); backgrou
 <section class="hero">
   <div class="hero-grid">
     <div class="hero-text">
-      <div class="hero-tag anim anim-1">Colección Otoño 2026</div>
-      <h1 class="anim anim-1">Viste<br><em>tu</em> carácter.</h1>
-      <p class="hero-sub anim anim-2">Ropa para hombres que no siguen tendencias — las definen. Diseño limpio, materiales nobles, actitud silenciosa.</p>
+      <div class="hero-location anim anim-1">📍 Cajamarca, Perú · Colección Invierno 2026</div>
+      <h1 class="anim anim-1">Del altiplano<br><em>a la ciudad.</em></h1>
+      <p class="hero-sub anim anim-2">Ropa casual-elegante para el hombre joven que conoce sus raíces y mira al mundo. Diseñada en Cajamarca con materiales nobles y actitud serena.</p>
       <a href="#coleccion" class="hero-cta anim anim-3">Explorar Colección</a>
     </div>
-    <div class="hero-image anim anim-1" style="background-image: url('https://pixabay.com/get/g8c65a00c5e992e0c31918c86ed2f1f2c256d627d4cd52892b3609d13f11648ac4c0ccfad103d453aa80231af5285ab3ccea390ad54e99c6bf8ee743c6b00e607_1280.jpg');"></div>
+    <div class="hero-image anim anim-1" style="background-image: url('https://pixabay.com/get/g0faa9084fe4705449af6f1dd59a7295facf2766f574cffacbd25a2b9ec2129848d2b99f4a0d5a404809c8bdd66b28e4e9a0652999b9cf378c426c4e58b89067ae_1280.jpg');"></div>
   </div>
 </section>
 
@@ -208,17 +207,17 @@ body { font-family: 'Inter', system-ui, sans-serif; color: var(--text); backgrou
 <section class="section section-dark" id="coleccion">
   <div class="section-inner">
     <div class="section-label">Colección</div>
-    <h2 class="section-title">Tres líneas.<br>Un carácter.</h2>
-    <p class="section-desc">Cada línea representa una faceta del hombre contemporáneo. Encuentra la tuya.</p>
+    <h2 class="section-title">Tres líneas.<br>Una identidad.</h2>
+    <p class="section-desc">Inspiradas en Cajamarca. Diseñadas para el mundo. Cada línea refleja una forma de llevar la elegancia sin esfuerzo.</p>
     <div class="cats-grid">
-      <div class="cat-card" style="background-image: url('https://pixabay.com/get/g19594e89a55628da581d1576bacbe4d406d95c477fa90481ef15178089edd82ae53edbbcc01a4ee40e71ccc7b2bf8f2ae6576ca2d31ab416f0a5cb38afdf85c2_1280.jpg');">
-        <div class="cat-label"><span>Línea</span><h3>Formal</h3></div>
+      <div class="cat-card" style="background-image: url('https://pixabay.com/get/g764362e7e162739e240d7d7d451da81073d0e7d8cea32dbe9bfa0b42b371f2b6b7a1290ac762ea156ff4094fb09f55407cc2fa1e4335d5c097bb8e7d7e357e58_1280.jpg');">
+        <div class="cat-label"><span>Línea</span><h3>Sierra</h3><small>Blazers, chompas, capas — capas para el frío andino</small></div>
       </div>
-      <div class="cat-card" style="background-image: url('https://pixabay.com/get/g145aefc9919eb4758c447887e4b283f29fb72fe948ad81af670931e728be7cf29ada4da06d70aef850e70b434b6c8a854b9fcf564d3b04dcf19641a8ae83ac5f_1280.jpg');">
-        <div class="cat-label"><span>Línea</span><h3>Casual</h3></div>
+      <div class="cat-card" style="background-image: url('https://pixabay.com/get/g8f1ccc7a5870e1c9ea270b23c61d46c08aa8b296d6fde968e709cbc756181fa50680101282d553f319488fc2c4995c4e092b0f3b2fcc0b18ed1a172befc7457f_1280.jpg');">
+        <div class="cat-label"><span>Línea</span><h3>Ciudad</h3><small>Camisas, pantalones, looks que cruzan fronteras</small></div>
       </div>
-      <div class="cat-card" style="background-image: url('https://pixabay.com/get/g624fdb60e9ff2c33f81f6fa4c9f884ddeec768fe87447242abd1d71ccace8a3fd04134e4ab5c791679b9e1a0c35d6704bd95575b3804f32d295d6c3ca5589baf_1280.jpg');">
-        <div class="cat-label"><span>Línea</span><h3>Esencial</h3></div>
+      <div class="cat-card" style="background-image: url('https://pixabay.com/get/gda76a28b817e1837efd4c2a4909d68005e9dd75710f73c307511ddfcc01109ffa295cc6ff10ca721a93480cbd5d92d4ceec8069f05e6bfa301bb290e4b285e33_1280.jpg');">
+        <div class="cat-label"><span>Línea</span><h3>Raíz</h3><small>Básicos de alpaca, cuero y algodón orgánico peruano</small></div>
       </div>
     </div>
   </div>
@@ -228,20 +227,20 @@ body { font-family: 'Inter', system-ui, sans-serif; color: var(--text); backgrou
 <section class="section">
   <div class="section-inner">
     <div class="section-label">Destacados</div>
-    <h2 class="section-title">Los más<br>elegidos.</h2>
-    <p class="section-desc">Piezas que definen la temporada. Producción limitada, calidad sin concesiones.</p>
+    <h2 class="section-title">Los más<br>pedidos.</h2>
+    <p class="section-desc">Piezas que definen esta temporada. Producidas en talleres locales con los mejores materiales de la región.</p>
     <div class="products-grid">
       <div class="product-card">
-        <div class="product-img" style="background-image: url('https://pixabay.com/get/g7422cfeda282c2d607f5f3b0ae2ed169343db0bc66cadaa0776c458d352119a6fcb498c03199809fdeb850e833559f6d57412fe7705485f1c6df2894946ae42e_1280.jpg');"></div>
-        <div class="product-info"><div class="product-tag">Línea Casual</div><h3>Camisa Oxford</h3><div class="price">$89.00</div></div>
+        <div class="product-img" style="background-image: url('https://pixabay.com/get/gaa4a6a106e5e36220a33ce06518d42b8a589954d4d58d2d256a1cbdeb68654360a8f64d70ebd1d48b3bc0d3c1d0ad12d2449c3e53a963601fc616a23474721f1_1280.jpg');"></div>
+        <div class="product-info"><div class="product-tag">Línea Sierra</div><h3>Chompa de Alpaca</h3><div class="price">S/ 459.00</div></div>
       </div>
       <div class="product-card">
-        <div class="product-img" style="background-image: url('https://pixabay.com/get/g57b64d22c9bd1c8a64d18825103981f37d59427ed1e9d53823baeac570463bcdfac9e732ed2247a7927339424f1d8411bd7c9c95998603bef696d60f93027a9d_1280.jpg');"></div>
-        <div class="product-info"><div class="product-tag">Línea Formal</div><h3>Traje Slim Fit</h3><div class="price">$349.00</div></div>
+        <div class="product-img" style="background-image: url('https://pixabay.com/get/gb744c81ce45b3b2f320ab0ec43c65e8bd8e9923b4de47db7f5b1ba7dcd6657ea78554e04b1c76561b9a1b04fd80065381ba628c380916c18386996bbdd3c1cac_1280.jpg');"></div>
+        <div class="product-info"><div class="product-tag">Línea Ciudad</div><h3>Blazer de Lino</h3><div class="price">S/ 689.00</div></div>
       </div>
       <div class="product-card">
-        <div class="product-img" style="background-image: url('https://pixabay.com/get/g4d03d6327623019cf0653cf692d0d9e8ea46967ffa36e5cee4e8fe267f1b946e55331f41d4198a9fae1153f52d216315d4dd1d216f53772a39498af7081edfb7_1280.jpg');"></div>
-        <div class="product-info"><div class="product-tag">Línea Formal</div><h3>Oxford Shoes</h3><div class="price">$219.00</div></div>
+        <div class="product-img" style="background-image: url('https://pixabay.com/get/gf1d20f2736d03d339c4057f37aab6d79b34953ea59e48c428a0959bb6d34120e4b5f2f4810cda7f308106695f75eab392ddd8176cb7681fab452dbddaa05f6f0_1280.jpg');"></div>
+        <div class="product-info"><div class="product-tag">Línea Raíz</div><h3>Botas de Cuero</h3><div class="price">S/ 549.00</div></div>
       </div>
     </div>
   </div>
@@ -251,13 +250,13 @@ body { font-family: 'Inter', system-ui, sans-serif; color: var(--text); backgrou
 <section class="section section-dark" id="lookbook">
   <div class="section-inner">
     <div class="section-label">Lookbook</div>
-    <h2 class="section-title">Así se lleva<br>Vértice.</h2>
-    <p class="section-desc">Estilismos reales. Sin retoques excesivos. La ropa habla sola.</p>
+    <h2 class="section-title">Así se lleva<br>Jalca.</h2>
+    <p class="section-desc">Estilismos reales en las calles de Cajamarca. La sierra nunca se había visto tan bien.</p>
     <div class="lookbook">
-      <div class="lookbook-item" style="background-image: url('https://pixabay.com/get/g8943b312a3a81bb2aed09274a3f7906d2d547aa8b695ecb856870ad4090e7c10eeddea41d9696490774429c6092a8756be7c24c7f9999e875d8122e853e7b5c0_1280.jpg');"></div>
-      <div class="lookbook-item" style="background-image: url('https://pixabay.com/get/g426bebce41846f4b57371346391c49f45bb9b9cbac3b3eacdac1c9398b442e2d09f15ea3ae258017721d1ebb74f4049d3601fdf9659c4b9c458ff8c11c13eaae_1280.jpg');"></div>
-      <div class="lookbook-item" style="background-image: url('https://pixabay.com/get/g2b3f31d1615da9b232267c94fa64c957ee04675b6559050a9ce46e27daf1cbc923059c81a34cb516f443a886b062cf6305703ad80186ed8ad5b2bacb53e1515a_1280.jpg');"></div>
-      <div class="lookbook-item" style="background-image: url('https://pixabay.com/get/g0e0e7295c0cc4e52164f55338e371692b35db2a5d986d2f319a96a5bcbf67b9a346844bee44fb0fd24b8706e471f1630806b62f2ffa30ba2be3c2c8879d18196_1280.jpg');"></div>
+      <div class="lookbook-item" style="background-image: url('https://pixabay.com/get/g65266305acf652caf45e8288d1aea343abc13c36a34c7ef9d6f60db2899aca4fb80a7a42527109f4fc8db292cc8339e4d68be0b3c55cb1110dfab221ef412ee2_1280.jpg');"></div>
+      <div class="lookbook-item" style="background-image: url('https://pixabay.com/get/gc7f744d1628359a633bd88dd8c3f4cd81b82a60cfd23b169ba73addf8702154b760e304a82efca22f3c93c68c54cacdd128d7251cfa3357da9c616f7ee622501_1280.jpg');"></div>
+      <div class="lookbook-item" style="background-image: url('https://pixabay.com/get/ga3ab8c0075d116bcabb00dd5bd30a828a81e76272e89f6901950bd051d6222ad2ab2ab2f1cf53cd514f52de8aab4c72eaab6825bc973e8136b9504ad66735f27_1280.jpg');"></div>
+      <div class="lookbook-item" style="background-image: url('https://pixabay.com/get/gd2afb3f59815c071dbf1c327ef9e0624e51a4b43591356c6f615715cd14248a0c99ca18b95275afa293a5dc3fcb8c1f4140ccd7e47b7e139366a6ac22cb1e015_1280.jpg');"></div>
     </div>
   </div>
 </section>
@@ -266,17 +265,17 @@ body { font-family: 'Inter', system-ui, sans-serif; color: var(--text); backgrou
 <section class="section" id="marca">
   <div class="section-inner">
     <div class="brand-grid">
-      <div class="brand-image" style="background-image: url('https://pixabay.com/get/g8de6bb65671705c18bd4043a5cf5dad94e329a53e1e73bd1098959b1990f83792be574de3f2203a312b9fbd0a9005e3029154f73c723543046c6eebdc4ade5ff_1280.jpg');"></div>
+      <div class="brand-image" style="background-image: url('https://pixabay.com/get/g57d2fc9d49f8be593915545379acdf3fd60ec13505d2bb75cd377352c9c8ae8667414418244eca9b5f53c717b04fdf18d64647b9a4cdcf25ec103c271d239fe3_1280.jpg');"></div>
       <div class="brand-text">
-        <div class="section-label">La Marca</div>
-        <h3>Menos es<br>más carácter.</h3>
-        <p>Vértice nace de una idea simple: la ropa masculina no necesita estridencias para destacar. Trabajamos con talleres locales, materiales de origen responsable y un compromiso radical con la calidad.</p>
-        <p>Cada prenda pasa por un mínimo de 12 controles antes de llegarte. No hacemos fast fashion — hacemos ropa que dura.</p>
+        <div class="section-label">Nuestro Origen</div>
+        <h3>Nacidos en<br>la jalca.</h3>
+        <p>La jalca es el pastizal altoandino que rodea Cajamarca — un ecosistema único entre los 3,000 y 4,000 metros. De ahí tomamos el nombre y la filosofía: resistencia, adaptación, belleza natural.</p>
+        <p>Trabajamos con artesanos cajamarquinos, lana de alpaca de la región y curtiembres locales. Cada prenda cuenta una historia de la sierra peruana.</p>
         <ul class="brand-features">
-          <li>Materiales 100% origen europeo</li>
-          <li>Producción en talleres locales</li>
-          <li>Garantía de 2 años en todas las prendas</li>
-          <li>Envíos neutros en carbono</li>
+          <li>Lana 100% alpaca peruana · origen trazable</li>
+          <li>Confección en talleres familiares de Cajamarca</li>
+          <li>Curtido vegetal · sin químicos agresivos</li>
+          <li>Envíos a todo el Perú · 3-5 días hábiles</li>
         </ul>
       </div>
     </div>
@@ -287,8 +286,8 @@ body { font-family: 'Inter', system-ui, sans-serif; color: var(--text); backgrou
 <section class="newsletter" id="newsletter">
   <div class="section-inner">
     <div class="section-label">Acceso Anticipado</div>
-    <h2 class="section-title" style="color:white;margin-bottom:12px;">Únete a Vértice.</h2>
-    <p style="color:var(--text-dim);max-width:400px;margin:0 auto 28px;font-size:0.9rem;">Nuevas colecciones, drops limitados y eventos exclusivos. Sin spam — solo lo que importa.</p>
+    <h2 class="section-title" style="color:white;margin-bottom:12px;">Únete a Jalca.</h2>
+    <p style="color:var(--text-dim);max-width:400px;margin:0 auto 28px;font-size:0.9rem;">Nuevas colecciones, drops limitados y eventos en Cajamarca. Sin spam — solo lo que importa.</p>
     <form class="newsletter-form" id="newsForm">
       <input type="email" placeholder="tu@email.com" required>
       <button type="submit">Unirme</button>
@@ -304,10 +303,10 @@ body { font-family: 'Inter', system-ui, sans-serif; color: var(--text); backgrou
         <div class="section-label">FAQ</div>
         <h2 class="section-title" style="font-size:1.8rem;">Preguntas<br>frecuentes.</h2>
         <div class="faq-list" style="margin-top:32px;">
-          <div class="faq-item"><button class="faq-q">¿Cuánto tardan los envíos? <span>+</span></button><div class="faq-a">Entregamos en 2-4 días laborables en España. Envíos internacionales en 5-10 días. Todos los pedidos incluyen seguimiento en tiempo real.</div></div>
-          <div class="faq-item"><button class="faq-q">¿Puedo devolver una prenda? <span>+</span></button><div class="faq-a">Sí. Tienes 30 días para devoluciones gratuitas. La prenda debe estar sin usar y con etiquetas. Te enviaremos una etiqueta de devolución por email.</div></div>
-          <div class="faq-item"><button class="faq-q">¿De dónde son los materiales? <span>+</span></button><div class="faq-a">Todos nuestros tejidos provienen de proveedores europeos certificados. Algodón orgánico de Portugal, lana de Italia y lino de Francia.</div></div>
-          <div class="faq-item"><button class="faq-q">¿Tienen tienda física? <span>+</span></button><div class="faq-a">Operamos 100% online con showroom privado en Madrid. Reserva cita para probarte la colección con asesoramiento personal.</div></div>
+          <div class="faq-item"><button class="faq-q">¿Hacen envíos a todo el Perú? <span>+</span></button><div class="faq-a">Sí. Enviamos a todo el Perú vía Olva Courier. Lima: 2-3 días. Provincia: 4-7 días. El envío es gratis en compras mayores a S/ 400.</div></div>
+          <div class="faq-item"><button class="faq-q">¿Puedo probarme antes de comprar? <span>+</span></button><div class="faq-a">Tenemos un showroom en Cajamarca (Jr. Amazonas 245). Pide tu cita por WhatsApp y te asesoramos personalmente con toda la colección.</div></div>
+          <div class="faq-item"><button class="faq-q">¿La alpaca pica? <span>+</span></button><div class="faq-a">No. Usamos alpaca baby — la fibra más suave, sin la médula hueca que causa picazón. Es hipoalergénica y más cálida que la lana de oveja.</div></div>
+          <div class="faq-item"><button class="faq-q">¿Tienen cambios y devoluciones? <span>+</span></button><div class="faq-a">Sí. Tienes 15 días para cambios de talla y 7 días para devoluciones. La prenda debe estar sin usar y con etiquetas originales.</div></div>
         </div>
       </div>
       <div>
@@ -316,11 +315,11 @@ body { font-family: 'Inter', system-ui, sans-serif; color: var(--text); backgrou
         <table class="size-table" style="margin-top:32px;">
           <thead><tr><th>Talla</th><th>Pecho (cm)</th><th>Cintura (cm)</th><th>Cadera (cm)</th></tr></thead>
           <tbody>
-            <tr><td>XS</td><td>86-91</td><td>71-76</td><td>86-91</td></tr>
             <tr><td>S</td><td>91-97</td><td>76-81</td><td>91-97</td></tr>
             <tr><td>M</td><td>97-102</td><td>81-86</td><td>97-102</td></tr>
             <tr><td>L</td><td>102-107</td><td>86-91</td><td>102-107</td></tr>
             <tr><td>XL</td><td>107-112</td><td>91-96</td><td>107-112</td></tr>
+            <tr><td>XXL</td><td>112-117</td><td>96-101</td><td>112-117</td></tr>
           </tbody>
         </table>
       </div>
@@ -332,14 +331,14 @@ body { font-family: 'Inter', system-ui, sans-serif; color: var(--text); backgrou
 <footer class="footer">
   <div class="footer-grid">
     <div class="footer-brand">
-      <a href="#" class="logo">VÉRTI<span>C</span>E</a>
-      <p>Moda masculina contemporánea. Diseño, calidad y carácter desde 2019.</p>
+      <a href="#" class="logo">JAL<span>C</span>A</a>
+      <p>Moda casual-elegante desde Cajamarca, Perú. Diseño, calidad y raíces andinas desde 2024.</p>
     </div>
-    <div class="footer-col"><h4>Colección</h4><ul><li><a href="#">Formal</a></li><li><a href="#">Casual</a></li><li><a href="#">Esencial</a></li><li><a href="#">Accesorios</a></li></ul></div>
-    <div class="footer-col"><h4>Ayuda</h4><ul><li><a href="#">Guía de Tallas</a></li><li><a href="#">Envíos</a></li><li><a href="#">Devoluciones</a></li><li><a href="#">Contacto</a></li></ul></div>
+    <div class="footer-col"><h4>Colección</h4><ul><li><a href="#">Sierra</a></li><li><a href="#">Ciudad</a></li><li><a href="#">Raíz</a></li><li><a href="#">Ver Todo</a></li></ul></div>
+    <div class="footer-col"><h4>Ayuda</h4><ul><li><a href="#">Guía de Tallas</a></li><li><a href="#">Envíos</a></li><li><a href="#">Cambios</a></li><li><a href="#">WhatsApp</a></li></ul></div>
     <div class="footer-col"><h4>Legal</h4><ul><li><a href="#">Privacidad</a></li><li><a href="#">Términos</a></li><li><a href="#">Cookies</a></li></ul></div>
   </div>
-  <div class="footer-bottom"><span>© 2026 Vértice. Todos los derechos reservados.</span><span>Hecho en Madrid</span></div>
+  <div class="footer-bottom"><span>© 2026 Jalca. Cajamarca, Perú.</span><span>RUC: 10723456789</span></div>
 </footer>
 
 <button class="btt" id="btt" aria-label="Volver arriba">↑</button>
@@ -355,11 +354,11 @@ body { font-family: 'Inter', system-ui, sans-serif; color: var(--text); backgrou
       <div class="price" id="modalPrice"></div>
       <p id="modalDesc"></p>
       <div class="size-select">
-        <button class="size-opt" onclick="this.parentElement.querySelectorAll('.size-opt').forEach(b=>b.classList.remove('active'));this.classList.add('active')">XS</button>
         <button class="size-opt" onclick="this.parentElement.querySelectorAll('.size-opt').forEach(b=>b.classList.remove('active'));this.classList.add('active')">S</button>
         <button class="size-opt active" onclick="this.parentElement.querySelectorAll('.size-opt').forEach(b=>b.classList.remove('active'));this.classList.add('active')">M</button>
         <button class="size-opt" onclick="this.parentElement.querySelectorAll('.size-opt').forEach(b=>b.classList.remove('active'));this.classList.add('active')">L</button>
         <button class="size-opt" onclick="this.parentElement.querySelectorAll('.size-opt').forEach(b=>b.classList.remove('active'));this.classList.add('active')">XL</button>
+        <button class="size-opt" onclick="this.parentElement.querySelectorAll('.size-opt').forEach(b=>b.classList.remove('active'));this.classList.add('active')">XXL</button>
       </div>
       <button class="modal-cta" id="modalCta">Añadir al Carrito — <span id="modalPriceBtn"></span></button>
     </div>
@@ -367,66 +366,45 @@ body { font-family: 'Inter', system-ui, sans-serif; color: var(--text); backgrou
 </div>
 
 <script>
+const n=document.getElementById('nav'),mt=document.getElementById('menuToggle'),nl=document.getElementById('navLinks');
+mt.addEventListener('click',()=>n.classList.toggle('open'));
+nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>n.classList.remove('open')));
 
-// Nav
-const n=document.getElementById('nav'),t=document.getElementById('menuToggle'),l=document.getElementById('navLinks');
-t.addEventListener('click',()=>n.classList.toggle('open'));
-l.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>n.classList.remove('open')));
-
-// Newsletter
 document.getElementById('newsForm').addEventListener('submit',e=>{
-  e.preventDefault();
-  const inp=e.target.querySelector('input'),b=e.target.querySelector('button');
+  e.preventDefault();const inp=e.target.querySelector('input'),b=e.target.querySelector('button');
   if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(inp.value)){inp.style.borderColor='#e74c3c';return;}
   inp.style.borderColor='';b.textContent='✓ ¡Bienvenido!';b.style.background='#2A8C5A';
   setTimeout(()=>{b.textContent='Unirme';b.style.background=''},3000);
 });
 
-// Back to Top
 const btt=document.getElementById('btt');
-window.addEventListener('scroll',()=>{btt.classList.toggle('visible',window.scrollY>600);});
+window.addEventListener('scroll',()=>btt.classList.toggle('visible',window.scrollY>600));
 btt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
-// FAQ Accordion
-document.querySelectorAll('.faq-q').forEach(q=>{q.addEventListener('click',()=>{q.parentElement.classList.toggle('open');});});
+document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>q.parentElement.classList.toggle('open')));
 
-// Scroll Reveal
-const revealObserver=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revealObserver.unobserve(e.target);}});},{threshold:0.15});
-document.querySelectorAll('.section, .product-card, .cat-card, .lookbook-item, .brand-grid').forEach(el=>{el.classList.add('reveal');revealObserver.observe(el);});
+const ro=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target)}})},{threshold:0.15});
+document.querySelectorAll('.section, .product-card, .cat-card, .lookbook-item, .brand-grid').forEach(el=>{el.classList.add('reveal');ro.observe(el)});
 
-// Product data for quick-view
 const products=[
-  {tag:'Línea Casual',title:'Camisa Oxford',price:'$89.00',img:"url('https://pixabay.com/get/g7422cfeda282c2d607f5f3b0ae2ed169343db0bc66cadaa0776c458d352119a6fcb498c03199809fdeb850e833559f6d57412fe7705485f1c6df2894946ae42e_1280.jpg')",desc:'Camisa de algodón orgánico. Corte regular, cuello button-down y puños ajustables. El básico elevado que funciona en cualquier ocasión.'},
-  {tag:'Línea Formal',title:'Traje Slim Fit',price:'$349.00',img:"url('https://pixabay.com/get/g57b64d22c9bd1c8a64d18825103981f37d59427ed1e9d53823baeac570463bcdfac9e732ed2247a7927339424f1d8411bd7c9c95998603bef696d60f93027a9d_1280.jpg')",desc:'Traje de lana italiana Super 110s. Entretela flotante, botones de cuerno genuino y forro de cupro. La pieza definitiva para el hombre que sabe vestir.'},
-  {tag:'Línea Formal',title:'Oxford Shoes',price:'$219.00',img:"url('https://pixabay.com/get/g4d03d6327623019cf0653cf692d0d9e8ea46967ffa36e5cee4e8fe267f1b946e55331f41d4198a9fae1153f52d216315d4dd1d216f53772a39498af7081edfb7_1280.jpg')",desc:'Zapatos Oxford de piel bovina curtida al vegetal. Suela de cuero cosida Goodyear. Elegancia atemporal fabricada en España.'}
+  {tag:'Línea Sierra',title:'Chompa de Alpaca',price:'S/ 459.00',img:"url('https://pixabay.com/get/gaa4a6a106e5e36220a33ce06518d42b8a589954d4d58d2d256a1cbdeb68654360a8f64d70ebd1d48b3bc0d3c1d0ad12d2449c3e53a963601fc616a23474721f1_1280.jpg')",desc:'Chompa tejida a mano con 100% alpaca baby peruana. Peso medio, ideal para el clima de la sierra. Cuello redondo, puños elásticos. Disponible en gris, marrón y crema.'},
+  {tag:'Línea Ciudad',title:'Blazer de Lino',price:'S/ 689.00',img:"url('https://pixabay.com/get/gb744c81ce45b3b2f320ab0ec43c65e8bd8e9923b4de47db7f5b1ba7dcd6657ea78554e04b1c76561b9a1b04fd80065381ba628c380916c18386996bbdd3c1cac_1280.jpg')",desc:'Blazer desestructurado de lino peruano. Perfecto para el clima templado de Cajamarca. Forro parcial, botones de coco. Combínalo con jeans o chinos sin esfuerzo.'},
+  {tag:'Línea Raíz',title:'Botas de Cuero',price:'S/ 549.00',img:"url('https://pixabay.com/get/gf1d20f2736d03d339c4057f37aab6d79b34953ea59e48c428a0959bb6d34120e4b5f2f4810cda7f308106695f75eab392ddd8176cb7681fab452dbddaa05f6f0_1280.jpg')",desc:'Botas de cuero curtido al vegetal por artesanos cajamarquinos. Suela de goma, cosida Goodyear. Envejecen con carácter. La inversión que dura años.'}
 ];
 
-// Quick-view Modal
-const modal=document.getElementById('modal'),modalClose=document.getElementById('modalClose');
-document.querySelectorAll('.product-card').forEach((card,i)=>{
-  card.style.cursor='pointer';
-  card.addEventListener('click',()=>{
-    if(i<products.length){const p=products[i];
-      document.getElementById('modalImg').style.backgroundImage=p.img;
-      document.getElementById('modalTag').textContent=p.tag;
-      document.getElementById('modalTitle').textContent=p.title;
-      document.getElementById('modalPrice').textContent=p.price;
-      document.getElementById('modalDesc').textContent=p.desc;
-      document.getElementById('modalPriceBtn').textContent=p.price;
-      document.getElementById('modalCta').innerHTML='Añadir al Carrito — <span id="modalPriceBtn">'+p.price+'</span>';
-      modal.classList.add('open');document.body.style.overflow='hidden';
-    }
-  });
-});
-modalClose.addEventListener('click',()=>{modal.classList.remove('open');document.body.style.overflow='';});
+const modal=document.getElementById('modal'),mc=document.getElementById('modalClose');
+document.querySelectorAll('.product-card').forEach((card,i)=>{card.style.cursor='pointer';card.addEventListener('click',()=>{if(i<products.length){const p=products[i];
+  document.getElementById('modalImg').style.backgroundImage=p.img;
+  document.getElementById('modalTag').textContent=p.tag;
+  document.getElementById('modalTitle').textContent=p.title;
+  document.getElementById('modalPrice').textContent=p.price;
+  document.getElementById('modalDesc').textContent=p.desc;
+  document.getElementById('modalCta').innerHTML='Añadir al Carrito — <span id=modalPriceBtn>'+p.price+'</span>';
+  modal.classList.add('open');document.body.style.overflow='hidden';}});});
+mc.addEventListener('click',()=>{modal.classList.remove('open');document.body.style.overflow='';});
 modal.addEventListener('click',e=>{if(e.target===modal){modal.classList.remove('open');document.body.style.overflow='';}});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('open')){modal.classList.remove('open');document.body.style.overflow='';}});
-
-// Modal CTA
-document.getElementById('modalCta').addEventListener('click',function(){
-  this.textContent='✓ Añadido al Carrito';this.style.background='#2A8C5A';
-  setTimeout(()=>{this.textContent='Añadir al Carrito — '+document.getElementById('modalPrice').textContent;this.style.background='';},2000);
-});
+document.getElementById('modalCta').addEventListener('click',function(){this.textContent='✓ Añadido';this.style.background='#2A8C5A';setTimeout(()=>{this.innerHTML='Añadir al Carrito — <span id=modalPriceBtn>'+document.getElementById('modalPrice').textContent+'</span>';this.style.background='';},2000);});
 </script>
 </body>
 </html>
