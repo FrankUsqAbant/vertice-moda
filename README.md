@@ -1,10 +1,10 @@
 <div align="center">
   <br>
-  <img src="https://readme-typing-svg.demolab.com?font=Syne&weight=700&size=44&duration=1800&pause=1000&color=B87351&center=true&vCenter=true&width=600&lines=V%C3%89RTICE;Moda+Masculina" alt="VÉRTICE" />
+  <img src="https://readme-typing-svg.demolab.com?font=Syne&weight=700&size=44&duration=1800&pause=1000&color=B87351&center=true&vCenter=true&width=600&lines=V%C3%89RTICE;Moda+Masculina+%2410K" alt="VÉRTICE" />
   <p><em>Viste tu carácter.</em></p>
   <br>
   
-  <img src="https://img.shields.io/badge/Valor-%241%2C000-B87351?style=for-the-badge" alt="Valor" />
+  <img src="https://img.shields.io/badge/Valor-%2410%2C000-B87351?style=for-the-badge" alt="Valor" />
   <img src="https://img.shields.io/badge/Estado-Production%20Ready-2A8C5A?style=for-the-badge" alt="Estado" />
   <img src="https://img.shields.io/badge/Stack-Vanilla%20HTML%2FCSS-0D0D0D?style=for-the-badge&logo=html5&logoColor=B87351" alt="Stack" />
   <img src="https://img.shields.io/badge/Tema-Dark%20%2B%20Copper-B87351?style=for-the-badge" alt="Tema" />
@@ -28,6 +28,7 @@
 | **Estilo** | Dark mode, editorial, masculino, sin florituras |
 | **Imágenes** | 12+ fotos únicas de [Pixabay](https://pixabay.com) — gratuitas, sin atribución |
 | **Responsive** | Mobile-first, menú hamburguesa, animaciones con `prefers-reduced-motion` |
+| **Features** | Quick-view modal, FAQ accordion, guía de tallas, scroll reveal, back-to-top |
 
 ### 📋 Secciones
 
