@@ -125,6 +125,55 @@ body { font-family: 'Inter', system-ui, sans-serif; color: var(--text); backgrou
 }
 .nav.open .nav-links { display: flex; flex-direction: column; position: absolute; top: 60px; left: 0; right: 0; background: var(--bg); padding: 24px; gap: 16px; border-bottom: 1px solid var(--border); }
 @media (prefers-reduced-motion: reduce) { .anim { animation: none; opacity: 1; } * { transition-duration: 0.01ms !important; } }
+
+/* === $10K UPGRADES === */
+
+/* Quick-view Modal */
+.modal-overlay { position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,0.92); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+.modal-content { background: var(--surface-light); max-width: 700px; width: 90%; max-height: 85vh; overflow-y: auto; display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--border); position: relative; }
+.modal-close { position: absolute; top: 12px; right: 12px; z-index: 3; background: none; border: 1px solid var(--border); color: var(--white); width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1.1rem; transition: 0.2s; }
+.modal-close:hover { border-color: var(--copper); color: var(--copper); }
+.modal-img { aspect-ratio: 3/4; background-size: cover; background-position: center; }
+.modal-details { padding: 32px; display: flex; flex-direction: column; justify-content: center; }
+.modal-details .product-tag { margin-bottom: 8px; }
+.modal-details h3 { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--white); text-transform: uppercase; margin-bottom: 8px; }
+.modal-details .price { font-size: 1.5rem; color: var(--copper); font-weight: 600; margin-bottom: 12px; }
+.modal-details p { color: var(--text-dim); font-size: 0.85rem; line-height: 1.7; margin-bottom: 20px; }
+.size-select { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+.size-opt { padding: 8px 16px; border: 1px solid var(--border); background: none; color: var(--text-dim); cursor: pointer; font-size: 0.8rem; font-family: 'Inter', sans-serif; transition: 0.2s; text-transform: uppercase; }
+.size-opt:hover, .size-opt.active { border-color: var(--copper); color: var(--copper); }
+.modal-cta { width: 100%; padding: 14px; background: var(--copper); color: var(--white); border: none; font-weight: 600; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; transition: 0.3s; margin-top: auto; }
+.modal-cta:hover { background: #C98560; }
+
+/* FAQ Accordion */
+.faq-list { max-width: 700px; }
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-q { width: 100%; background: none; border: none; color: var(--white); font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 600; padding: 20px 0; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; letter-spacing: 0.5px; text-transform: uppercase; }
+.faq-q span { font-size: 1.2rem; color: var(--copper); transition: transform 0.3s; }
+.faq-item.open .faq-q span { transform: rotate(45deg); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; color: var(--text-dim); font-size: 0.9rem; line-height: 1.7; }
+.faq-item.open .faq-a { max-height: 200px; padding-bottom: 20px; }
+
+/* Size Guide */
+.size-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+.size-table th { text-align: left; padding: 12px; color: var(--copper); font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; border-bottom: 1px solid var(--border); }
+.size-table td { padding: 12px; color: var(--text-dim); font-size: 0.85rem; border-bottom: 1px solid var(--border); }
+.size-table tr:hover td { color: var(--white); }
+
+/* Back to Top */
+.btt { position: fixed; bottom: 24px; right: 24px; z-index: 99; width: 44px; height: 44px; border-radius: 50%; background: var(--copper); color: var(--white); border: none; cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: all 0.3s; box-shadow: 0 4px 16px rgba(0,0,0,0.4); }
+.btt.visible { opacity: 1; pointer-events: all; }
+.btt:hover { background: #C98560; transform: translateY(-3px); }
+
+/* Scroll-reveal */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 700px) {
+  .modal-content { grid-template-columns: 1fr; }
+  .modal-img { aspect-ratio: 16/9; }
+}
 </style>
 </head>
 <body>
@@ -247,6 +296,38 @@ body { font-family: 'Inter', system-ui, sans-serif; color: var(--text); backgrou
   </div>
 </section>
 
+<!-- FAQ + SIZE GUIDE -->
+<section class="section section-dark">
+  <div class="section-inner">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;">
+      <div>
+        <div class="section-label">FAQ</div>
+        <h2 class="section-title" style="font-size:1.8rem;">Preguntas<br>frecuentes.</h2>
+        <div class="faq-list" style="margin-top:32px;">
+          <div class="faq-item"><button class="faq-q">¿Cuánto tardan los envíos? <span>+</span></button><div class="faq-a">Entregamos en 2-4 días laborables en España. Envíos internacionales en 5-10 días. Todos los pedidos incluyen seguimiento en tiempo real.</div></div>
+          <div class="faq-item"><button class="faq-q">¿Puedo devolver una prenda? <span>+</span></button><div class="faq-a">Sí. Tienes 30 días para devoluciones gratuitas. La prenda debe estar sin usar y con etiquetas. Te enviaremos una etiqueta de devolución por email.</div></div>
+          <div class="faq-item"><button class="faq-q">¿De dónde son los materiales? <span>+</span></button><div class="faq-a">Todos nuestros tejidos provienen de proveedores europeos certificados. Algodón orgánico de Portugal, lana de Italia y lino de Francia.</div></div>
+          <div class="faq-item"><button class="faq-q">¿Tienen tienda física? <span>+</span></button><div class="faq-a">Operamos 100% online con showroom privado en Madrid. Reserva cita para probarte la colección con asesoramiento personal.</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="section-label">Guía de Tallas</div>
+        <h2 class="section-title" style="font-size:1.8rem;">Encuentra<br>tu ajuste.</h2>
+        <table class="size-table" style="margin-top:32px;">
+          <thead><tr><th>Talla</th><th>Pecho (cm)</th><th>Cintura (cm)</th><th>Cadera (cm)</th></tr></thead>
+          <tbody>
+            <tr><td>XS</td><td>86-91</td><td>71-76</td><td>86-91</td></tr>
+            <tr><td>S</td><td>91-97</td><td>76-81</td><td>91-97</td></tr>
+            <tr><td>M</td><td>97-102</td><td>81-86</td><td>97-102</td></tr>
+            <tr><td>L</td><td>102-107</td><td>86-91</td><td>102-107</td></tr>
+            <tr><td>XL</td><td>107-112</td><td>91-96</td><td>107-112</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer class="footer">
   <div class="footer-grid">
@@ -261,11 +342,91 @@ body { font-family: 'Inter', system-ui, sans-serif; color: var(--text); backgrou
   <div class="footer-bottom"><span>© 2026 Vértice. Todos los derechos reservados.</span><span>Hecho en Madrid</span></div>
 </footer>
 
+<button class="btt" id="btt" aria-label="Volver arriba">↑</button>
+
+<!-- QUICK-VIEW MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal-content">
+    <button class="modal-close" id="modalClose">✕</button>
+    <div class="modal-img" id="modalImg"></div>
+    <div class="modal-details">
+      <div class="product-tag" id="modalTag"></div>
+      <h3 id="modalTitle"></h3>
+      <div class="price" id="modalPrice"></div>
+      <p id="modalDesc"></p>
+      <div class="size-select">
+        <button class="size-opt" onclick="this.parentElement.querySelectorAll('.size-opt').forEach(b=>b.classList.remove('active'));this.classList.add('active')">XS</button>
+        <button class="size-opt" onclick="this.parentElement.querySelectorAll('.size-opt').forEach(b=>b.classList.remove('active'));this.classList.add('active')">S</button>
+        <button class="size-opt active" onclick="this.parentElement.querySelectorAll('.size-opt').forEach(b=>b.classList.remove('active'));this.classList.add('active')">M</button>
+        <button class="size-opt" onclick="this.parentElement.querySelectorAll('.size-opt').forEach(b=>b.classList.remove('active'));this.classList.add('active')">L</button>
+        <button class="size-opt" onclick="this.parentElement.querySelectorAll('.size-opt').forEach(b=>b.classList.remove('active'));this.classList.add('active')">XL</button>
+      </div>
+      <button class="modal-cta" id="modalCta">Añadir al Carrito — <span id="modalPriceBtn"></span></button>
+    </div>
+  </div>
+</div>
+
 <script>
+
+// Nav
 const n=document.getElementById('nav'),t=document.getElementById('menuToggle'),l=document.getElementById('navLinks');
 t.addEventListener('click',()=>n.classList.toggle('open'));
 l.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>n.classList.remove('open')));
-document.getElementById('newsForm').addEventListener('submit',e=>{e.preventDefault();const b=e.target.querySelector('button');b.textContent='✓ ¡Bienvenido!';b.style.background='#2A8C5A';setTimeout(()=>{b.textContent='Unirme';b.style.background=''},3000);});
+
+// Newsletter
+document.getElementById('newsForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const inp=e.target.querySelector('input'),b=e.target.querySelector('button');
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(inp.value)){inp.style.borderColor='#e74c3c';return;}
+  inp.style.borderColor='';b.textContent='✓ ¡Bienvenido!';b.style.background='#2A8C5A';
+  setTimeout(()=>{b.textContent='Unirme';b.style.background=''},3000);
+});
+
+// Back to Top
+const btt=document.getElementById('btt');
+window.addEventListener('scroll',()=>{btt.classList.toggle('visible',window.scrollY>600);});
+btt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+// FAQ Accordion
+document.querySelectorAll('.faq-q').forEach(q=>{q.addEventListener('click',()=>{q.parentElement.classList.toggle('open');});});
+
+// Scroll Reveal
+const revealObserver=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revealObserver.unobserve(e.target);}});},{threshold:0.15});
+document.querySelectorAll('.section, .product-card, .cat-card, .lookbook-item, .brand-grid').forEach(el=>{el.classList.add('reveal');revealObserver.observe(el);});
+
+// Product data for quick-view
+const products=[
+  {tag:'Línea Casual',title:'Camisa Oxford',price:'$89.00',img:"url('https://pixabay.com/get/g7422cfeda282c2d607f5f3b0ae2ed169343db0bc66cadaa0776c458d352119a6fcb498c03199809fdeb850e833559f6d57412fe7705485f1c6df2894946ae42e_1280.jpg')",desc:'Camisa de algodón orgánico. Corte regular, cuello button-down y puños ajustables. El básico elevado que funciona en cualquier ocasión.'},
+  {tag:'Línea Formal',title:'Traje Slim Fit',price:'$349.00',img:"url('https://pixabay.com/get/g57b64d22c9bd1c8a64d18825103981f37d59427ed1e9d53823baeac570463bcdfac9e732ed2247a7927339424f1d8411bd7c9c95998603bef696d60f93027a9d_1280.jpg')",desc:'Traje de lana italiana Super 110s. Entretela flotante, botones de cuerno genuino y forro de cupro. La pieza definitiva para el hombre que sabe vestir.'},
+  {tag:'Línea Formal',title:'Oxford Shoes',price:'$219.00',img:"url('https://pixabay.com/get/g4d03d6327623019cf0653cf692d0d9e8ea46967ffa36e5cee4e8fe267f1b946e55331f41d4198a9fae1153f52d216315d4dd1d216f53772a39498af7081edfb7_1280.jpg')",desc:'Zapatos Oxford de piel bovina curtida al vegetal. Suela de cuero cosida Goodyear. Elegancia atemporal fabricada en España.'}
+];
+
+// Quick-view Modal
+const modal=document.getElementById('modal'),modalClose=document.getElementById('modalClose');
+document.querySelectorAll('.product-card').forEach((card,i)=>{
+  card.style.cursor='pointer';
+  card.addEventListener('click',()=>{
+    if(i<products.length){const p=products[i];
+      document.getElementById('modalImg').style.backgroundImage=p.img;
+      document.getElementById('modalTag').textContent=p.tag;
+      document.getElementById('modalTitle').textContent=p.title;
+      document.getElementById('modalPrice').textContent=p.price;
+      document.getElementById('modalDesc').textContent=p.desc;
+      document.getElementById('modalPriceBtn').textContent=p.price;
+      document.getElementById('modalCta').innerHTML='Añadir al Carrito — <span id="modalPriceBtn">'+p.price+'</span>';
+      modal.classList.add('open');document.body.style.overflow='hidden';
+    }
+  });
+});
+modalClose.addEventListener('click',()=>{modal.classList.remove('open');document.body.style.overflow='';});
+modal.addEventListener('click',e=>{if(e.target===modal){modal.classList.remove('open');document.body.style.overflow='';}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('open')){modal.classList.remove('open');document.body.style.overflow='';}});
+
+// Modal CTA
+document.getElementById('modalCta').addEventListener('click',function(){
+  this.textContent='✓ Añadido al Carrito';this.style.background='#2A8C5A';
+  setTimeout(()=>{this.textContent='Añadir al Carrito — '+document.getElementById('modalPrice').textContent;this.style.background='';},2000);
+});
 </script>
 </body>
 </html>
