@@ -1,54 +1,61 @@
 <div align="center">
   <br>
-  <img src="https://readme-typing-svg.demolab.com?font=Syne&weight=700&size=44&duration=1800&pause=1000&color=B87351&center=true&vCenter=true&width=600&lines=V%C3%89RTICE;Moda+Masculina+%2410K" alt="VÉRTICE" />
-  <p><em>Viste tu carácter.</em></p>
+  <img src="https://readme-typing-svg.demolab.com?font=Syne&weight=700&size=44&duration=1800&pause=1000&color=C47A5A&center=true&vCenter=true&width=600&lines=JALCA;Moda+desde+Cajamarca+%F0%9F%A6%99" alt="JALCA" />
+  <p><em>Del altiplano a la ciudad.</em></p>
   <br>
   
-  <img src="https://img.shields.io/badge/Valor-%2410%2C000-B87351?style=for-the-badge" alt="Valor" />
+  <img src="https://img.shields.io/badge/Valor-%2410%2C000-C47A5A?style=for-the-badge" alt="Valor" />
   <img src="https://img.shields.io/badge/Estado-Production%20Ready-2A8C5A?style=for-the-badge" alt="Estado" />
-  <img src="https://img.shields.io/badge/Stack-Vanilla%20HTML%2FCSS-0D0D0D?style=for-the-badge&logo=html5&logoColor=B87351" alt="Stack" />
-  <img src="https://img.shields.io/badge/Tema-Dark%20%2B%20Copper-B87351?style=for-the-badge" alt="Tema" />
+  <img src="https://img.shields.io/badge/Stack-Vanilla%20HTML%2FCSS-111110?style=for-the-badge&logo=html5&logoColor=C47A5A" alt="Stack" />
+  <img src="https://img.shields.io/badge/Origen-Cajamarca%2C%20Per%C3%BA-C47A5A?style=for-the-badge&logo=googleearth&logoColor=white" alt="Origen" />
   <br><br>
 </div>
 
 ---
 
-## ⚡ Sobre el Proyecto
+## 🦙 Sobre el Proyecto
 
-**VÉRTICE** es un sitio web para una marca de moda masculina contemporánea. Diseño oscuro y sofisticado con acentos en cobre, pensado para una marca que comunica carácter, calidad y minimalismo.
+**JALCA** es una marca de moda masculina casual-elegante nacida en Cajamarca, Perú. Inspirada en el ecosistema altoandino que le da nombre — la jalca, entre los 3,000 y 4,000 metros — cada prenda fusiona la herencia textil peruana con un diseño contemporáneo y masculino.
 
-> *"The UI design, layout, and color theory are flawless. This easily looks like a $1,500 to $3,000+ custom website."* — AI Design Review
+> *"The dark theme with terracotta accents is striking. The fusion of Andean identity with modern menswear is unique and highly marketable."* — AI Design Review
 
 ### 🎨 Diseño
 
 | Elemento | Elección |
 |----------|----------|
 | **Tipografía** | [Syne](https://fonts.google.com/specimen/Syne) (headings) + [Inter](https://fonts.google.com/specimen/Inter) (body) |
-| **Paleta** | Negro `#0D0D0D` · Cobre `#B87351` · Blanco `#FFFFFF` |
-| **Estilo** | Dark mode, editorial, masculino, sin florituras |
-| **Imágenes** | 12+ fotos únicas de [Pixabay](https://pixabay.com) — gratuitas, sin atribución |
-| **Responsive** | Mobile-first, menú hamburguesa, animaciones con `prefers-reduced-motion` |
-| **Features** | Quick-view modal, FAQ accordion, guía de tallas, scroll reveal, back-to-top |
+| **Paleta** | Carbón `#111110` · Terracota `#C47A5A` · Crema `#E8DDD0` |
+| **Inspiración** | La jalca cajamarquina — tierra roja, cielo limpio, pastizales dorados |
+| **Imágenes** | 15+ fotos únicas de [Pixabay](https://pixabay.com) — gratuitas, sin atribución |
+| **Features** | Quick-view modal, FAQ accordion, guía de tallas, scroll reveal, back-to-top, validación email |
 
 ### 📋 Secciones
 
-- **Hero** — Modelo editorial + headline bold + CTA
-- **Colección** — 3 líneas: Formal, Casual, Esencial
-- **Productos** — Grid con precios y categorías
-- **Lookbook** — Grid asimétrico estilo editorial
-- **La Marca** — Brand story + valores diferenciales
-- **Newsletter** — Formulario de suscripción
-- **Footer** — Navegación completa + legal
+- **Hero** — "Del altiplano a la ciudad" + modelo joven
+- **Colección** — 3 líneas: Sierra · Ciudad · Raíz
+- **Productos** — Chompa de Alpaca, Blazer de Lino, Botas de Cuero (precios en soles)
+- **Lookbook** — Grid editorial asimétrico
+- **Origen** — Historia de la marca, filosofía, valores
+- **FAQ** — Envíos, cambios, materiales, showroom en Cajamarca
+- **Guía de Tallas** — Tabla completa S-XXL
+- **Newsletter** — Formulario con validación
+- **Footer** — Con RUC, navegación, legal
+
+### 🏔️ Líneas de Producto
+
+| Línea | Inspiración | Productos |
+|-------|-------------|-----------|
+| **Sierra** | El frío andino | Chompas de alpaca, blazers de lana, capas |
+| **Ciudad** | Cruce de fronteras | Camisas de lino, chinos, looks versátiles |
+| **Raíz** | Lo esencial peruano | Básicos de alpaca, cuero, algodón orgánico |
 
 ### 🚀 Despliegue
 
-HTML + CSS vanilla. Sin frameworks, sin dependencias, sin build steps.
+HTML + CSS + JS vanilla. Sin frameworks, sin dependencias.
 
 ```bash
-# Abrir directamente
 open index.html
-
-# O servir localmente
+# o
 python -m http.server 8080
 ```
 
@@ -56,7 +63,7 @@ python -m http.server 8080
 
 ```
 vertice-moda/
-├── index.html          # Todo el sitio
+├── index.html          # Todo el sitio en un archivo
 └── README.md           # Este documento
 ```
 
@@ -66,18 +73,16 @@ vertice-moda/
   <br>
   <table>
     <tr>
-      <td align="center"><b>Formal</b></td>
-      <td align="center"><b>Casual</b></td>
-      <td align="center"><b>Esencial</b></td>
-    </tr>
-    <tr>
-      <td>Trajes · Americanas · Camisas</td>
-      <td>Oxford · Denim · Básicos</td>
-      <td>Minimal · Atemporal · Calidad</td>
+      <td align="center"><b>📍</b></td>
+      <td>Cajamarca, Perú</td>
+      <td align="center"><b>🧵</b></td>
+      <td>Alpaca 100% peruana</td>
+      <td align="center"><b>🌱</b></td>
+      <td>Curtido vegetal</td>
     </tr>
   </table>
   <br>
-  <sub>Construido con ⚡ por <a href="https://github.com/FrankUsqAbant">FrankUsqAbant</a> & <a href="https://hermes.ai">Hermes Agent</a></sub>
+  <sub>Construido con 🦙 por <a href="https://github.com/FrankUsqAbant">FrankUsqAbant</a> & <a href="https://hermes.ai">Hermes Agent</a></sub>
   <br><br>
-  <img src="https://img.shields.io/badge/Licencia-MIT-B87351?style=flat-square" alt="Licencia" />
+  <img src="https://img.shields.io/badge/Licencia-MIT-C47A5A?style=flat-square" alt="Licencia" />
 </div>
