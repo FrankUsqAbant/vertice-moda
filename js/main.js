@@ -233,7 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       setTimeout(() => {
-        alert(`🎉 ¡Pago con Yape Registrado con Éxito!\n\nPrenda: ${item.name}\nMonto: S/. ${item.precio.toLocaleString('es-PE')}.00\nTitular: Franquer Vidal Usquiza Abanto\n\nTu pedido ha sido guardado exitosamente.`);
+        alert(`🎉 ¡Pago con Yape Registrado con Éxito!\n\nPrenda: ${item.name}\nMonto: S/. ${item.precio.toLocaleString('es-PE')}.00\n\nTu pedido ha sido procesado exitosamente.`);
         toggleModalYape(false);
         btnConfirmPaymentAction.textContent = 'CONFIRMAR PAGO';
         btnConfirmPaymentAction.style.background = '';
