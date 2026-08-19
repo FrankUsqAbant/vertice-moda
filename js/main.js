@@ -1,79 +1,81 @@
 /**
- * VÉRTICE — Digital Wardrobe & Virtual Fitting Room
- * Interactivity:
- * - Vértice Fit Console (Selected Items & Outfit Switcher)
- * - Model Live Fitting Viewport with architectural studio lighting
- * - Floating Product Carousel Card (Next/Prev buttons & pagination dots)
- * - Bento Grid Catalog (6 products with quick add)
- * - Help & Guidance Accordion with Coats & Trousers size tables
- * - Yape QR Checkout Modal & Supabase integration
+ * VÉRTICE — Armario Digital & Probador Virtual en Vivo
+ * Cajamarca, Perú
+ * 
+ * Funcionalidades:
+ * - Consola Vértice Fit: Selección de prendas y cambio de atuendo en vivo sobre el modelo.
+ * - Carrusel de productos derecho con flechas y paginación.
+ * - Catálogo Bento con 6 productos y vista previa.
+ * - Acordeón interactivo de Guía de Tallas (Abrigos y Pantalones).
+ * - Modal de Pago Yape con QR oficial de Franquer Vidal Usquiza Abanto.
+ * - Integración con Supabase y fallback a almacenamiento local seguro.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   // --------------------------------------------------------------------------
-  // 1. Colección de Prendas del Probador
+  // 1. Catálogo del Armario
   // --------------------------------------------------------------------------
-  const wardrobeCollection = [
+  const coleccionArmario = [
     {
       id: 'alpaca-coat',
-      name: 'Andes Textured Coat',
-      category: 'Alpaca Blend Coat',
-      tag: 'DEEP BROWN',
-      price: 1450,
-      image: 'imagenes/outfit-leather-jacket.webp',
-      thumb: 'imagenes/leather-jacket.webp'
+      name: 'Abrigo Texturizado Andes',
+      categoria: 'Abrigo de Alpaca',
+      etiqueta: 'MARRÓN PROFUNDO',
+      precio: 1450,
+      imagen: 'imagenes/outfit-leather-jacket.webp',
+      miniatura: 'imagenes/leather-jacket.webp'
     },
     {
       id: 'terracotta-sweater',
-      name: 'The Cumbre | Baby Alpaca Pullover',
-      category: 'Cashmere Sweater',
-      tag: 'RAW AMBER',
-      price: 680,
-      image: 'imagenes/outfit-terracotta-knit.webp',
-      thumb: 'imagenes/alpaca-knit.webp'
+      name: 'Chompa The Cumbre Baby Alpaca',
+      categoria: 'Chompa Baby Alpaca',
+      etiqueta: 'ÁMBAR NATURAL',
+      precio: 680,
+      imagen: 'imagenes/outfit-terracotta-knit.webp',
+      miniatura: 'imagenes/alpaca-knit.webp'
     },
     {
       id: 'wool-trousers',
-      name: 'Andes Tailored Trousers',
-      category: 'Wool Trousers',
-      tag: 'DEEP OBSIDIAN',
-      price: 1600,
-      image: 'imagenes/outfit-wool-trousers.webp',
-      thumb: 'imagenes/wool-trousers.webp'
+      name: 'Pantalón Sastre de Lana',
+      categoria: 'Pantalón de Lana',
+      etiqueta: 'OBSIDIANA PURA',
+      precio: 1600,
+      imagen: 'imagenes/outfit-wool-trousers.webp',
+      miniatura: 'imagenes/wool-trousers.webp'
     },
     {
       id: 'linen-blazer',
-      name: 'Raw Natural Linen Blazer',
-      category: 'Linen Blazers',
-      tag: 'EARTH BROWN',
-      price: 820,
-      image: 'imagenes/outfit-linen-blazer.webp',
-      thumb: 'imagenes/linen-blazer.webp'
+      name: 'Pantalón Slim Lima',
+      categoria: 'Pantalón Slim',
+      etiqueta: 'TIERRA ANDINA',
+      precio: 820,
+      imagen: 'imagenes/outfit-linen-blazer.webp',
+      miniatura: 'imagenes/linen-blazer.webp'
     },
     {
       id: 'leather-boots',
-      name: 'Vértice Heritage Desert Boots',
-      category: 'Leather Boots',
-      tag: 'VEG TANNED',
-      price: 920,
-      image: 'imagenes/outfit-leather-jacket.webp',
-      thumb: 'imagenes/vertice-boots.webp'
+      name: 'Botas de Cuero Desert',
+      categoria: 'Botas de Cuero',
+      etiqueta: 'CURTIDO VEGETAL',
+      precio: 920,
+      imagen: 'imagenes/outfit-leather-jacket.webp',
+      miniatura: 'imagenes/vertice-boots.webp'
     }
   ];
 
-  let activeIndex = 1; // Default: Terracotta Baby Alpaca Sweater
-  let cart = [
+  let indiceActivo = 1; // Por defecto: Chompa Baby Alpaca
+  let carrito = [
     {
       id: 'terracotta-sweater',
-      name: 'The Cumbre | Baby Alpaca Pullover',
-      price: 680,
-      image: 'imagenes/alpaca-knit.webp',
-      quantity: 1
+      name: 'Chompa The Cumbre Baby Alpaca',
+      precio: 680,
+      imagen: 'imagenes/alpaca-knit.webp',
+      cantidad: 1
     }
   ];
 
   // --------------------------------------------------------------------------
-  // 2. Elementos DOM
+  // 2. Elementos del DOM
   // --------------------------------------------------------------------------
   const mainFittingModelImg = document.getElementById('mainFittingModelImg');
   const carouselCardImg = document.getElementById('carouselCardImg');
@@ -91,97 +93,97 @@ document.addEventListener('DOMContentLoaded', () => {
   const cartToggleNav = document.getElementById('cartToggleNav');
   const toastContainer = document.getElementById('toastContainer');
 
-  // Accordion Help & Guidance
+  // Acordeón de Ayuda y Tallas
   const accordionItems = document.querySelectorAll('.help-accordion-item');
 
   // --------------------------------------------------------------------------
   // 3. Actualizar Prenda en el Modelo y Carrusel
   // --------------------------------------------------------------------------
-  function setGarment(index) {
-    if (index < 0) index = wardrobeCollection.length - 1;
-    if (index >= wardrobeCollection.length) index = 0;
-    activeIndex = index;
+  function cambiarPrenda(indice) {
+    if (indice < 0) indice = coleccionArmario.length - 1;
+    if (indice >= coleccionArmario.length) indice = 0;
+    indiceActivo = indice;
 
-    const item = wardrobeCollection[activeIndex];
+    const item = coleccionArmario[indiceActivo];
 
-    // Animación suave del modelo central
+    // Animación fluida sobre el modelo
     if (mainFittingModelImg) {
       mainFittingModelImg.style.opacity = '0.35';
       mainFittingModelImg.style.transform = 'scale(0.98)';
       setTimeout(() => {
-        mainFittingModelImg.src = item.image;
+        mainFittingModelImg.src = item.imagen;
         mainFittingModelImg.style.opacity = '1';
         mainFittingModelImg.style.transform = 'scale(1)';
       }, 150);
     }
 
-    // Actualizar tarjeta flotante del carrusel derecho
+    // Actualizar tarjeta del carrusel flotante
     if (carouselCardImg) {
       carouselCardImg.style.opacity = '0.3';
       setTimeout(() => {
-        carouselCardImg.src = item.thumb;
+        carouselCardImg.src = item.miniatura;
         carouselCardImg.style.opacity = '1';
       }, 150);
     }
 
-    // Actualizar píldoras activas
+    // Actualizar botones de selector
     outfitPillBtns.forEach((pill, idx) => {
-      if (idx === activeIndex) pill.classList.add('active');
+      if (idx === indiceActivo) pill.classList.add('active');
       else pill.classList.remove('active');
     });
 
-    // Actualizar items seleccionados
+    // Actualizar prendas seleccionadas
     selectedItemCards.forEach((card, idx) => {
-      if (idx === activeIndex % 3) card.classList.add('active');
+      if (idx === indiceActivo % 3) card.classList.add('active');
       else card.classList.remove('active');
     });
 
-    // Actualizar monto en el botón y modal
+    // Actualizar precio en botón y modal
     if (btnTryOnThisLook) {
-      btnTryOnThisLook.textContent = `TRY ON THIS LOOK (S/. ${item.price.toLocaleString('es-PE')})`;
+      btnTryOnThisLook.textContent = `PROBAR ESTE LOOK (S/. ${item.precio.toLocaleString('es-PE')})`;
     }
     if (yapeModalAmount) {
-      yapeModalAmount.textContent = `AMOUNT: S/. ${item.price.toLocaleString('es-PE')}.00`;
+      yapeModalAmount.textContent = `MONTO A PAGAR: S/. ${item.precio.toLocaleString('es-PE')}.00`;
     }
   }
 
   // Controles de Carrusel
   if (carouselPrevBtn) {
     carouselPrevBtn.addEventListener('click', () => {
-      setGarment(activeIndex - 1);
-      showToast(`Prenda anterior: ${wardrobeCollection[activeIndex].name}`);
+      cambiarPrenda(indiceActivo - 1);
+      mostrarNotificacion(`Prenda: ${coleccionArmario[indiceActivo].name}`);
     });
   }
 
   if (carouselNextBtn) {
     carouselNextBtn.addEventListener('click', () => {
-      setGarment(activeIndex + 1);
-      showToast(`Siguiente prenda: ${wardrobeCollection[activeIndex].name}`);
+      cambiarPrenda(indiceActivo + 1);
+      mostrarNotificacion(`Prenda: ${coleccionArmario[indiceActivo].name}`);
     });
   }
 
-  // Outfit Switcher Pills
+  // Píldoras de Selector de Prenda
   outfitPillBtns.forEach((pill, idx) => {
     pill.addEventListener('click', () => {
-      setGarment(idx);
-      showToast(`Seleccionado: ${wardrobeCollection[activeIndex].name}`);
+      cambiarPrenda(idx);
+      mostrarNotificacion(`Seleccionado: ${coleccionArmario[indiceActivo].name}`);
     });
   });
 
-  // Selected Items Click
+  // Clic en Prendas Seleccionadas
   selectedItemCards.forEach((card, idx) => {
     card.addEventListener('click', () => {
-      setGarment(idx);
-      showToast(`Visualizando: ${wardrobeCollection[activeIndex].name}`);
+      cambiarPrenda(idx);
+      mostrarNotificacion(`Visualizando: ${coleccionArmario[indiceActivo].name}`);
     });
   });
 
   // --------------------------------------------------------------------------
-  // 4. Modal Yape QR Checkout
+  // 4. Modal de Pago con Yape QR
   // --------------------------------------------------------------------------
-  function toggleYapeModal(open = true) {
+  function toggleModalYape(abrir = true) {
     if (!yapeModalBackdrop) return;
-    if (open) {
+    if (abrir) {
       yapeModalBackdrop.classList.add('open');
       document.body.style.overflow = 'hidden';
     } else {
@@ -192,68 +194,68 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (btnTryOnThisLook) {
     btnTryOnThisLook.addEventListener('click', () => {
-      const item = wardrobeCollection[activeIndex];
-      cart = [{ ...item, quantity: 1 }];
+      const item = coleccionArmario[indiceActivo];
+      carrito = [{ ...item, cantidad: 1 }];
       if (yapeModalAmount) {
-        yapeModalAmount.textContent = `AMOUNT: S/. ${item.price.toLocaleString('es-PE')}.00`;
+        yapeModalAmount.textContent = `MONTO A PAGAR: S/. ${item.precio.toLocaleString('es-PE')}.00`;
       }
-      toggleYapeModal(true);
+      toggleModalYape(true);
     });
   }
 
   if (cartToggleNav) {
-    cartToggleNav.addEventListener('click', () => toggleYapeModal(true));
+    cartToggleNav.addEventListener('click', () => toggleModalYape(true));
   }
 
   if (btnCloseYapeModal) {
-    btnCloseYapeModal.addEventListener('click', () => toggleYapeModal(false));
+    btnCloseYapeModal.addEventListener('click', () => toggleModalYape(false));
   }
 
   if (yapeModalBackdrop) {
     yapeModalBackdrop.addEventListener('click', (e) => {
-      if (e.target === yapeModalBackdrop) toggleYapeModal(false);
+      if (e.target === yapeModalBackdrop) toggleModalYape(false);
     });
   }
 
   if (btnConfirmPaymentAction) {
     btnConfirmPaymentAction.addEventListener('click', async () => {
-      const item = wardrobeCollection[activeIndex];
-      btnConfirmPaymentAction.textContent = 'Guardando en Supabase...';
+      const item = coleccionArmario[indiceActivo];
+      btnConfirmPaymentAction.textContent = 'Guardando pedido en Supabase...';
       btnConfirmPaymentAction.style.background = '#2A8C5A';
 
       if (window.verticeDB) {
         await window.verticeDB.saveYapeOrder({
-          clientName: 'Cliente VÉRTICE',
+          clientName: 'Cliente VÉRTICE Cajamarca',
           phone: '976000000',
-          total: item.price,
-          items: cart
+          total: item.precio,
+          items: carrito
         });
       }
 
       setTimeout(() => {
-        alert(`🎉 ¡Pago con Yape Registrado con Éxito!\n\nPrenda: ${item.name}\nMonto: S/. ${item.price.toLocaleString('es-PE')}.00\nNúmero: 976 000 000 (Frank Abanto - VÉRTICE)\n\nTu pedido ha sido guardado en Supabase.`);
-        toggleYapeModal(false);
-        btnConfirmPaymentAction.textContent = 'CONFIRM PAYMENT';
+        alert(`🎉 ¡Pago con Yape Registrado con Éxito!\n\nPrenda: ${item.name}\nMonto: S/. ${item.precio.toLocaleString('es-PE')}.00\nTitular: Franquer Vidal Usquiza Abanto\n\nTu pedido ha sido guardado exitosamente.`);
+        toggleModalYape(false);
+        btnConfirmPaymentAction.textContent = 'CONFIRMAR PAGO';
         btnConfirmPaymentAction.style.background = '';
       }, 900);
     });
   }
 
   // --------------------------------------------------------------------------
-  // 5. Help & Guidance Accordion
+  // 5. Acordeón de Guía de Tallas y Preguntas Frecuentes
   // --------------------------------------------------------------------------
   accordionItems.forEach(item => {
     const header = item.querySelector('.help-accordion-header');
     const icon = item.querySelector('.help-accordion-icon');
     if (header) {
       header.addEventListener('click', () => {
-        const isOpen = item.classList.contains('active');
+        const estaAbierto = item.classList.contains('active');
         accordionItems.forEach(i => {
           i.classList.remove('active');
           const ic = i.querySelector('.help-accordion-icon');
           if (ic) ic.textContent = '+';
         });
-        if (!isOpen) {
+        if (!estaAbierto) {
           item.classList.add('active');
           if (icon) icon.textContent = '−';
         }
@@ -262,24 +264,24 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // --------------------------------------------------------------------------
-  // 6. Bento Grid Quick Click
+  // 6. Clic en Productos del Catálogo Bento
   // --------------------------------------------------------------------------
   document.querySelectorAll('.bento-product-card').forEach((card, idx) => {
     card.addEventListener('click', () => {
-      if (idx < wardrobeCollection.length) {
-        setGarment(idx);
+      if (idx < coleccionArmario.length) {
+        cambiarPrenda(idx);
         window.scrollTo({ top: 0, behavior: 'smooth' });
-        showToast(`👗 Probando en el modelo: ${wardrobeCollection[idx].name}`);
+        mostrarNotificacion(`👗 Probando en el modelo: ${coleccionArmario[idx].name}`);
       }
     });
   });
 
-  // Toast
-  function showToast(message) {
+  // Notificaciones Toast
+  function mostrarNotificacion(mensaje) {
     if (!toastContainer) return;
     const toast = document.createElement('div');
     toast.className = 'toast';
-    toast.innerHTML = `<span>⚡</span> <span>${message}</span>`;
+    toast.innerHTML = `<span>⚡</span> <span>${mensaje}</span>`;
     toastContainer.appendChild(toast);
     setTimeout(() => {
       toast.style.opacity = '0';
@@ -290,5 +292,5 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Inicialización
-  setGarment(1);
+  cambiarPrenda(1);
 });
