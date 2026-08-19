@@ -8,7 +8,7 @@
 
   <p align="center">
     <a href="https://frankusqabant.github.io/vertice-moda/">
-      <img src="https://img.shields.io/badge/🌐_Demo_en_Vivo-GitHub_Pages-2A8C5A?style=for-the-badge&logo=github&logoColor=white" alt="Demo en Vivo" />
+      <img src="https://img.shields.io/badge/🌐_Visitar_Sitio_Web-GitHub_Pages-2A8C5A?style=for-the-badge&logo=github&logoColor=white" alt="Sitio Web en Vivo" />
     </a>
     <img src="https://img.shields.io/badge/Yape_QR-Pagos_Directos-720e9e?style=for-the-badge" alt="Yape" />
     <img src="https://img.shields.io/badge/Database-Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white" alt="Supabase" />
@@ -18,7 +18,7 @@
   <br />
 
   <a href="https://frankusqabant.github.io/vertice-moda/">
-    <img src="imagenes/diseno-propuesta/diseno-completo-landing.webp" alt="Vista Panorámica de VÉRTICE" width="880" style="border-radius: 14px; border: 1px solid rgba(196, 115, 74, 0.4); box-shadow: 0 16px 40px rgba(0,0,0,0.8);" />
+    <img src="imagenes/readme/preview-vertice.webp" alt="Página de Inicio de VÉRTICE" width="880" style="border-radius: 14px; border: 1px solid rgba(196, 115, 74, 0.4); box-shadow: 0 16px 40px rgba(0,0,0,0.8);" />
   </a>
 </div>
 
@@ -27,6 +27,8 @@
 ## 🏔️ Sobre el Proyecto
 
 **VÉRTICE** es una plataforma web de moda masculina contemporánea que fusiona el legado textil milenario de los Andes con diseño arquitectónico de vanguardia. Confeccionado en **Cajamarca, Perú** utilizando **100% Baby Alpaca**, lino orgánico y cuero con curtido vegetal.
+
+> 🌐 **Sitio Web Oficial:** [https://frankusqabant.github.io/vertice-moda/](https://frankusqabant.github.io/vertice-moda/)
 
 ---
 
@@ -41,20 +43,11 @@
 
 ---
 
-## 🚀 Ejecución Local
+## 🌐 Acceso al Proyecto en Producción
 
-```bash
-# 1. Clonar el repositorio
-git clone https://github.com/FrankUsqAbant/vertice-moda.git
+El proyecto se encuentra alojado y disponible públicamente en **GitHub Pages**:
 
-# 2. Entrar a la carpeta
-cd vertice-moda
-
-# 3. Iniciar servidor local
-python -m http.server 3001
-```
-
-Abre tu navegador en: 👉 **[http://localhost:3001](http://localhost:3001)**
+👉 **[https://frankusqabant.github.io/vertice-moda/](https://frankusqabant.github.io/vertice-moda/)**
 
 ---
 
