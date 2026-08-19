@@ -1,470 +1,613 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JALCA — Moda Masculina desde Cajamarca</title>
-<meta name="description" content="JALCA — Ropa casual-elegante para el hombre joven. Diseñada en Cajamarca, Perú. Alpaca, lino, cuero.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg:#0A0A09;--surface:#12110F;--glass:rgba(255,255,255,.025);--glass-border:rgba(255,255,255,.05);
-  --terracota:#C4734A;--terracota-light:#D48B6A;--clay:#B5653E;--cream:#F0E8DD;
-  --cream-dim:rgba(240,232,221,.45);--white:#F5F2EE;--text:#D4CFC8;--text-dim:#8A857E;--text-muted:#56514B;
-  --max:1280px;--r-sm:12px;--r-md:20px;--r-lg:28px;--r-xl:36px
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;font-size:16px;background:var(--bg);scrollbar-width:thin;scrollbar-color:var(--terracota) var(--bg)}
-::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--terracota);border-radius:3px}
-body{font-family:'DM Sans',system-ui,sans-serif;color:var(--text);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
 
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,9,.88);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border-bottom:1px solid var(--glass-border)}
-.nav-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:64px}
-.logo{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:var(--white);text-decoration:none;letter-spacing:6px;position:relative}
-.logo-dot{position:absolute;top:-4px;right:-14px;width:6px;height:6px;border-radius:50%;background:var(--terracota)}
-.nav-links{display:flex;gap:40px;list-style:none;align-items:center}
-.nav-links a{text-decoration:none;color:var(--text-dim);font-size:.68rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;transition:color .3s}
-.nav-links a:hover{color:var(--white)}
-.nav-cta{background:var(--terracota)!important;color:var(--white)!important;padding:10px 22px!important;border-radius:100px!important;font-size:.65rem!important;letter-spacing:2px!important}
-.nav-cta:hover{background:var(--clay)!important;transform:translateY(-1px);box-shadow:0 8px 24px rgba(196,115,74,.3)}
-.menu-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;z-index:101}
-.menu-toggle span{display:block;width:24px;height:2px;background:var(--white);transition:.3s;border-radius:1px}
+  <title>VÉRTICE — Bespoke Walk-in Wardrobe & Live Atelier | AW26</title>
+  <meta name="description" content="VÉRTICE — El Vestidor y Armario Digital de Alta Costura Masculina. Viste al modelo en vivo, personaliza tonos y tallas, y compra seguro con Yape QR. Cajamarca, Perú.">
+  <meta name="author" content="Frank Abanto">
+  <meta name="theme-color" content="#040406">
 
-/* HERO */
-.hero{min-height:100vh;display:flex;align-items:center;position:relative;padding:120px 40px 80px;overflow:hidden}
-.hero-bg{position:absolute;inset:0;z-index:0}
-.hero-bg::before{content:'';position:absolute;top:-300px;right:-200px;width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(196,115,74,.07) 0%,transparent 70%);animation:float 10s ease-in-out infinite}
-.hero-bg::after{content:'';position:absolute;bottom:-200px;left:-150px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(240,232,221,.03) 0%,transparent 70%);animation:float 8s ease-in-out infinite;animation-delay:-4s}
-@keyframes float{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,-40px)}}
-.hero-inner{max-width:var(--max);margin:0 auto;width:100%;position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;border-radius:100px;background:var(--glass);border:1px solid var(--glass-border);font-size:.62rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--terracota);margin-bottom:28px;backdrop-filter:blur(8px)}
-.hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--terracota);animation:pulse 2s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
-.hero h1{font-family:'Syne',sans-serif;font-size:clamp(3.2rem,7vw,5.5rem);font-weight:800;line-height:.9;letter-spacing:-1px;color:var(--white);margin-bottom:24px;text-transform:uppercase}
-.hero h1 em{font-style:normal;background:linear-gradient(135deg,var(--terracota-light),var(--cream));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-sub{font-size:1.05rem;color:var(--text-dim);max-width:420px;line-height:1.8;margin-bottom:36px}
-.btn-primary{display:inline-flex;align-items:center;gap:10px;padding:16px 36px;border-radius:100px;background:var(--terracota);color:var(--white);text-decoration:none;font-weight:600;font-size:.82rem;letter-spacing:1px;text-transform:uppercase;transition:all .35s;border:none;cursor:pointer}
-.btn-primary:hover{background:var(--clay);transform:translateY(-2px);box-shadow:0 12px 40px rgba(196,115,74,.35)}
-.btn-ghost{display:inline-flex;align-items:center;gap:8px;padding:16px 28px;border-radius:100px;background:var(--glass);border:1px solid var(--glass-border);color:var(--white);text-decoration:none;font-weight:500;font-size:.78rem;letter-spacing:1px;text-transform:uppercase;transition:all .35s;backdrop-filter:blur(8px)}
-.btn-ghost:hover{border-color:var(--cream-dim);background:rgba(255,255,255,.05)}
-.hero-visual{position:relative}
-.hero-img{aspect-ratio:3/4;border-radius:var(--r-xl);overflow:hidden;background-size:cover;background-position:center 20%;box-shadow:0 30px 80px rgba(0,0,0,.5);transform:rotate(1deg);transition:transform .5s}
-.hero-img:hover{transform:rotate(0)}
-.hero-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(10,10,9,.5) 100%)}
-.hero-float{position:absolute;bottom:-24px;left:-24px;padding:14px 22px;border-radius:var(--r-sm);background:rgba(18,17,15,.9);backdrop-filter:blur(16px);border:1px solid var(--glass-border);display:flex;align-items:center;gap:10px;z-index:2}
-.hero-float-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--terracota),var(--clay));display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;color:var(--white)}
-.hero-float strong{display:block;font-size:.72rem;color:var(--white)}
-.hero-float span{font-size:.62rem;color:var(--text-dim)}
+  <!-- Open Graph -->
+  <meta property="og:title" content="VÉRTICE — Bespoke Walk-in Wardrobe & Live Atelier">
+  <meta property="og:description" content="Armario interactivo de lujo: escoge del perchero, viste al modelo y personaliza colores y tallas en vivo.">
+  <meta property="og:type" content="website">
 
-/* SECTIONS */
-.section{position:relative;z-index:1;padding:100px 40px}
-.section-inner{max-width:var(--max);margin:0 auto}
-.s-label{display:inline-flex;align-items:center;gap:10px;font-size:.58rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--terracota);margin-bottom:16px}
-.s-label::before{content:'';width:16px;height:1px;background:var(--terracota)}
-.s-title{font-family:'Syne',sans-serif;font-size:clamp(2rem,3.8vw,3rem);font-weight:700;line-height:1.06;letter-spacing:-.2px;color:var(--white);margin-bottom:12px;text-transform:uppercase}
-.s-desc{font-size:.92rem;color:var(--text-dim);max-width:480px;line-height:1.8;margin-bottom:48px}
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
 
-/* BENTO */
-.bento{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
-.bento-item{position:relative;border-radius:var(--r-md);overflow:hidden;background-size:cover;background-position:center;cursor:pointer;min-height:340px;display:flex;align-items:flex-end;padding:28px;transition:transform .4s}
-.bento-item:hover{transform:scale(1.02)}
-.bento-item:nth-child(1){grid-row:span 2}
-.bento-item::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(10,10,9,.88) 100%)}
-.bento-content{position:relative;z-index:2}
-.bento-content .line{font-size:.58rem;letter-spacing:4px;text-transform:uppercase;color:var(--terracota);display:block;margin-bottom:4px}
-.bento-content h3{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
-.bento-content p{font-size:.78rem;color:var(--cream-dim);line-height:1.5;max-width:220px}
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
 
-/* PRODUCTS GLASS */
-.products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.product-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:var(--r-md);overflow:hidden;backdrop-filter:blur(8px);transition:all .4s;cursor:pointer}
-.product-card:hover{transform:translateY(-6px);border-color:rgba(196,115,74,.25);box-shadow:0 20px 50px rgba(0,0,0,.4)}
-.product-img-wrap{position:relative;aspect-ratio:3/4;overflow:hidden}
-.product-img{width:100%;height:100%;background-size:cover;background-position:center;transition:transform .6s}
-.product-card:hover .product-img{transform:scale(1.05)}
-.product-badge{position:absolute;top:14px;left:14px;padding:5px 12px;border-radius:100px;background:var(--terracota);color:var(--white);font-size:.55rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;z-index:2}
-.product-info{padding:20px}
-.product-info .tag{font-size:.55rem;letter-spacing:3px;text-transform:uppercase;color:var(--terracota);margin-bottom:6px}
-.product-info h3{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
-.product-info .price{font-size:.92rem;color:var(--cream-dim);font-weight:500}
-.product-info .price strong{color:var(--white);font-size:1rem}
-
-/* STATS */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.stat-card{padding:32px 24px;border-radius:var(--r-md);background:var(--glass);border:1px solid var(--glass-border);backdrop-filter:blur(8px);text-align:center;transition:transform .3s}
-.stat-card:hover{transform:translateY(-4px)}
-.stat-num{font-family:'Syne',sans-serif;font-size:2.5rem;font-weight:800;color:var(--white);line-height:1}
-.stat-num em{font-style:normal;color:var(--terracota)}
-.stat-label{font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--text-dim);margin-top:6px}
-
-/* LOOKBOOK SCROLL */
-.lookbook-scroll{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:12px;margin:0 -40px;padding-left:40px;padding-right:40px}
-.lookbook-scroll::-webkit-scrollbar{height:0}
-.lb-item{flex:0 0 280px;aspect-ratio:3/4;border-radius:var(--r-md);overflow:hidden;position:relative;scroll-snap-align:start;background-size:cover;background-position:center;transition:transform .4s}
-.lb-item:hover{transform:scale(1.03)}
-.lb-item:nth-child(3){flex:0 0 420px;aspect-ratio:4/3}
-.lb-item::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.3);opacity:0;transition:opacity .3s}
-.lb-item:hover::after{opacity:1}
-.lb-caption{position:absolute;bottom:18px;left:18px;z-index:2;opacity:0;transform:translateY(8px);transition:all .3s}
-.lb-item:hover .lb-caption{opacity:1;transform:translateY(0)}
-.lb-caption span{font-size:.55rem;letter-spacing:3px;text-transform:uppercase;color:var(--cream);display:block;margin-bottom:2px}
-.lb-caption strong{font-size:.75rem;color:var(--white)}
-
-/* BRAND */
-.brand-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
-.brand-img-wrap{position:relative}
-.brand-img{aspect-ratio:3/4;border-radius:var(--r-xl);background-size:cover;background-position:center;box-shadow:0 30px 80px rgba(0,0,0,.5)}
-.brand-glow{position:absolute;top:-24px;right:-24px;width:140px;height:140px;border-radius:50%;background:var(--terracota);opacity:.1;filter:blur(50px)}
-.brand-text h3{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;line-height:1.1}
-.brand-text h3 em{font-style:normal;color:var(--terracota)}
-.brand-text p{color:var(--text-dim);line-height:1.8;margin-bottom:14px;font-size:.9rem}
-.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
-.pill{padding:9px 16px;border-radius:100px;background:var(--glass);border:1px solid var(--glass-border);color:var(--text-dim);font-size:.68rem;font-weight:500;letter-spacing:.5px;backdrop-filter:blur(4px);transition:all .3s}
-.pill:hover{border-color:var(--terracota);color:var(--terracota)}
-
-/* FAQ */
-.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.faq-card{padding:24px;border-radius:var(--r-sm);background:var(--glass);border:1px solid var(--glass-border);backdrop-filter:blur(8px);cursor:pointer;transition:all .3s}
-.faq-card:hover{border-color:rgba(196,115,74,.2)}
-.faq-card h4{font-family:'Syne',sans-serif;font-size:.88rem;font-weight:600;color:var(--white);display:flex;justify-content:space-between;align-items:center}
-.faq-card h4 span{color:var(--terracota);transition:transform .3s}
-.faq-card.open h4 span{transform:rotate(45deg)}
-.faq-card p{max-height:0;overflow:hidden;transition:max-height .4s ease;color:var(--text-dim);font-size:.8rem;line-height:1.7}
-.faq-card.open p{max-height:180px;margin-top:10px}
-
-/* SIZE */
-.size-guide{overflow-x:auto}
-.size-table{width:100%;border-collapse:separate;border-spacing:0}
-.size-table th{text-align:left;padding:14px 16px;color:var(--terracota);font-size:.6rem;letter-spacing:3px;text-transform:uppercase;border-bottom:1px solid var(--glass-border)}
-.size-table td{padding:14px 16px;color:var(--text-dim);font-size:.82rem;border-bottom:1px solid var(--glass-border)}
-.size-table tr:hover td{color:var(--white);background:var(--glass)}
-
-/* NEWSLETTER */
-.nl-wrap{padding:72px 0;text-align:center;position:relative}
-.nl-wrap::before{content:'';position:absolute;inset:0;border-radius:var(--r-xl);background:radial-gradient(ellipse at center,rgba(196,115,74,.05) 0%,transparent 70%)}
-.nl-form{display:flex;gap:8px;max-width:440px;margin:0 auto;position:relative;z-index:1}
-.nl-form input{flex:1;padding:15px 20px;border-radius:100px;background:var(--glass);border:1px solid var(--glass-border);color:var(--white);font-family:'DM Sans',sans-serif;font-size:.88rem;backdrop-filter:blur(8px)}
-.nl-form input:focus{outline:none;border-color:var(--terracota);box-shadow:0 0 0 4px rgba(196,115,74,.08)}
-.nl-form button{padding:15px 30px;border-radius:100px;background:var(--terracota);color:var(--white);border:none;font-weight:700;font-size:.75rem;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all .35s;white-space:nowrap}
-.nl-form button:hover{background:var(--clay);box-shadow:0 8px 24px rgba(196,115,74,.3)}
-
-/* FOOTER */
-.footer{padding:72px 40px 28px;background:var(--surface);border-top:1px solid var(--glass-border);position:relative;z-index:1}
-.footer-grid{max-width:var(--max);margin:0 auto 40px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}
-.footer-brand .logo{display:block;margin-bottom:10px}
-.footer-brand p{color:var(--text-muted);font-size:.75rem;max-width:240px;line-height:1.7}
-.footer-col h4{color:var(--white);font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:16px}
-.footer-col ul{list-style:none}
-.footer-col ul li{margin-bottom:8px}
-.footer-col ul li a{color:var(--text-muted);text-decoration:none;font-size:.75rem;transition:color .2s}
-.footer-col ul li a:hover{color:var(--terracota)}
-.footer-bottom{max-width:var(--max);margin:0 auto;padding-top:20px;border-top:1px solid var(--glass-border);display:flex;justify-content:space-between;font-size:.6rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;flex-wrap:wrap;gap:8px}
-
-/* MODAL */
-.modal-overlay{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.94);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s}
-.modal-overlay.open{opacity:1;pointer-events:all}
-.modal-content{background:var(--surface);max-width:760px;width:92%;max-height:85vh;overflow-y:auto;display:grid;grid-template-columns:1fr 1fr;border-radius:var(--r-lg);border:1px solid var(--glass-border);overflow:hidden}
-.modal-close{position:absolute;top:14px;right:14px;z-index:3;background:rgba(0,0,0,.5);border:1px solid var(--glass-border);color:var(--white);width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.9rem;transition:.2s;backdrop-filter:blur(8px)}
-.modal-close:hover{border-color:var(--terracota);color:var(--terracota)}
-.modal-img{aspect-ratio:3/4;background-size:cover;background-position:center}
-.modal-details{padding:32px;display:flex;flex-direction:column;justify-content:center}
-.modal-details .tag{font-size:.55rem;letter-spacing:3px;text-transform:uppercase;color:var(--terracota)}
-.modal-details h3{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;color:var(--white);text-transform:uppercase;margin:6px 0}
-.modal-details .price{font-size:1.4rem;color:var(--cream-dim);font-weight:500;margin-bottom:12px}
-.modal-details .price strong{color:var(--white)}
-.modal-desc{color:var(--text-dim);font-size:.82rem;line-height:1.7;margin-bottom:20px}
-.size-pills{display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap}
-.size-pill{padding:9px 16px;border-radius:100px;border:1px solid var(--glass-border);background:var(--glass);color:var(--text-dim);cursor:pointer;font-size:.74rem;font-weight:600;font-family:'DM Sans',sans-serif;transition:.2s;text-transform:uppercase}
-.size-pill:hover,.size-pill.active{border-color:var(--terracota);color:var(--terracota)}
-.modal-btn{width:100%;padding:15px;border-radius:100px;background:var(--terracota);color:var(--white);border:none;font-weight:700;font-size:.8rem;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all .35s}
-.modal-btn:hover{background:var(--clay);box-shadow:0 8px 24px rgba(196,115,74,.3)}
-
-/* BACK TO TOP */
-.btt{position:fixed;bottom:28px;right:28px;z-index:99;width:44px;height:44px;border-radius:50%;background:var(--terracota);color:var(--white);border:none;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:all .3s;box-shadow:0 6px 20px rgba(0,0,0,.5)}
-.btt.visible{opacity:1;pointer-events:all}
-.btt:hover{background:var(--clay);transform:translateY(-3px)}
-
-/* ANIMATIONS */
-.reveal{opacity:0;transform:translateY(36px);transition:opacity .7s ease,transform .7s ease}
-.reveal.visible{opacity:1;transform:translateY(0)}
-.anim{animation:fadeUp .7s ease forwards;opacity:0}
-.anim-1{animation-delay:.08s}.anim-2{animation-delay:.2s}.anim-3{animation-delay:.35s}
-@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-
-@media(max-width:1024px){
-  .hero-inner,.brand-grid{grid-template-columns:1fr;gap:48px}
-  .hero-visual{max-width:360px;margin:0 auto}
-  .bento{grid-template-columns:1fr 1fr}.bento-item:nth-child(1){grid-row:auto}
-  .lb-item{flex:0 0 220px}.lb-item:nth-child(3){flex:0 0 300px}
-}
-@media(max-width:768px){
-  .nav-links{display:none}.menu-toggle{display:flex}
-  .hero{padding:100px 20px 60px;text-align:center}
-  .hero-sub{margin-left:auto;margin-right:auto}
-  .hero-float{left:0}
-  .bento{grid-template-columns:1fr}
-  .products-grid{grid-template-columns:1fr 1fr}
-  .stats{grid-template-columns:1fr 1fr}
-  .faq-grid{grid-template-columns:1fr}
-  .footer-grid{grid-template-columns:1fr 1fr}
-  .section{padding:72px 20px}
-  .lookbook-scroll{margin-left:-20px;margin-right:-20px;padding-left:20px;padding-right:20px}
-  .modal-content{grid-template-columns:1fr}.modal-img{aspect-ratio:16/9}
-}
-@media(max-width:480px){
-  .products-grid,.footer-grid,.stats{grid-template-columns:1fr}
-  .nl-form{flex-direction:column}
-}
-.nav.open .nav-links{display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:rgba(10,10,9,.98);padding:28px;gap:18px;border-bottom:1px solid var(--glass-border)}
-@media(prefers-reduced-motion:reduce){.anim,.reveal{animation:none;opacity:1}*{transition-duration:.01ms!important}}
-</style>
+  <!-- Supabase JS Client CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
-<nav class="nav" id="nav">
-  <div class="nav-inner">
-    <a href="#" class="logo">JALCA<span class="logo-dot"></span></a>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#coleccion">Colección</a></li>
-      <li><a href="#lookbook">Lookbook</a></li>
-      <li><a href="#marca">Origen</a></li>
-      <li><a href="#newsletter" class="nav-cta">Acceso Anticipado</a></li>
-    </ul>
-    <button class="menu-toggle" id="menuToggle" aria-label="Menú"><span></span><span></span><span></span></button>
-  </div>
-</nav>
+  <!-- Ambient Light Haloes -->
+  <div class="ambient-glow-1" aria-hidden="true"></div>
+  <div class="ambient-glow-2" aria-hidden="true"></div>
 
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-inner">
-    <div class="hero-text">
-      <div class="hero-badge anim anim-1"><span class="hero-badge-dot"></span> Cajamarca, Perú · Otoño 2026</div>
-      <h1 class="anim anim-1">Del altiplano<br><em>a la ciudad.</em></h1>
-      <p class="hero-sub anim anim-2">Ropa casual-elegante para el hombre joven que conoce sus raíces. Diseñada en Cajamarca con alpaca peruana, lino y cuero curtido a mano.</p>
-      <div style="display:flex;gap:14px;flex-wrap:wrap" class="anim anim-3">
-        <a href="#coleccion" class="btn-primary">Explorar Colección →</a>
-        <a href="#marca" class="btn-ghost">Nuestra Historia</a>
-      </div>
-    </div>
-    <div class="hero-visual anim anim-1">
-      <div class="hero-img" style="background-image:url('https://pixabay.com/get/g72b496234a6fda4856c671accde1868682b5588a247badfbd9c85d0235af274e84df898de453a57b3bd3e15e9b50832c528c7a8f25f0a5958cab923a4d449942_1280.jpg')"></div>
-      <div class="hero-float">
-        <div class="hero-float-avatar">JC</div>
-        <div><strong>+1,200 clientes</strong><span>en todo el Perú</span></div>
-      </div>
-    </div>
-  </div>
-</section>
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
 
-<section class="section" id="coleccion">
-  <div class="section-inner">
-    <div class="s-label">Colección</div>
-    <h2 class="s-title">Tres líneas.<br>Una identidad.</h2>
-    <p class="s-desc">Inspiradas en los paisajes de Cajamarca. Diseñadas para el hombre joven que se mueve entre la sierra y la ciudad.</p>
-    <div class="bento">
-      <div class="bento-item" style="background-image:url('https://pixabay.com/get/g8f062a95a2e663e679c07ce1bafc343bd34ed89a2a70dfc107e962b036d77efb2f5738aaa46d77f601d90bc5cf4a3414c772dfba3e5d467f5284a1309ccf6422_1280.jpg')">
-        <div class="bento-content"><span class="line">Línea</span><h3>Sierra</h3><p>Chompas de alpaca, blazers de lana y capas. Elegancia que abriga en el frío andino.</p></div>
-      </div>
-      <div class="bento-item" style="background-image:url('https://pixabay.com/get/gedac8caf7c53ae9b0bfe234e10ac6a097b2570f2239aaceb0888b35108b15a990a643aa3260d082a918965d25ef434dade80377bf308ea6aa6b68c3fcf0802d6_1280.jpg')">
-        <div class="bento-content"><span class="line">Línea</span><h3>Ciudad</h3><p>Camisas de lino, chinos y looks que cruzan fronteras con estilo natural.</p></div>
-      </div>
-      <div class="bento-item" style="background-image:url('https://pixabay.com/get/gac3020087418cabaad4d014996cf318cd24adef4041259d684e36e9920f5d9218a277f06ca8e81b5d02a6bac4c0e4296af0394220ed9f04a7a84ba65a27469dd_1280.jpg')">
-        <div class="bento-content"><span class="line">Línea</span><h3>Raíz</h3><p>Básicos de alpaca, cuero y algodón peruano. El fondo de armario perfecto.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
+  <!-- ========================================================================
+       1. FLOATING LUXURY PILL NAVBAR
+       ======================================================================== -->
+  <div class="nav-wrapper">
+    <header class="floating-nav">
+      <a href="#probador" class="nav-brand">VÉRTICE<span>.</span></a>
 
-<section class="section" style="background:var(--surface)">
-  <div class="section-inner">
-    <div class="s-label">Destacados</div>
-    <h2 class="s-title">Los más<br>pedidos.</h2>
-    <p class="s-desc">Piezas que definen la temporada. Hechas en talleres cajamarquinos con los mejores materiales de la región.</p>
-    <div class="products-grid">
-      <div class="product-card">
-        <div class="product-img-wrap"><div class="product-badge">★ Bestseller</div><div class="product-img" style="background-image:url('https://pixabay.com/get/g8d8f50b84b96d89705f866832400e3882b4954bd1ad02620b2ab61c2e6a7fc512a830ff27871e7ebbc1cbb3c433112db72e0c68530cf4b652ff6b8cd94ed5477_1280.jpg')"></div></div>
-        <div class="product-info"><div class="tag">Línea Sierra</div><h3>Chompa de Alpaca</h3><div class="price">Desde <strong>S/ 459</strong></div></div>
-      </div>
-      <div class="product-card">
-        <div class="product-img-wrap"><div class="product-badge">Nuevo</div><div class="product-img" style="background-image:url('https://pixabay.com/get/g156d7434f5f5b0b6abd078f3864b593bb3c469923ab38768f59dc6d601278bfa3bf99d38b3eced667436b9238cefd1d2dcb25b8bab00a2a1eccac1d853055b1f_1280.jpg')"></div></div>
-        <div class="product-info"><div class="tag">Línea Ciudad</div><h3>Blazer de Lino</h3><div class="price">Desde <strong>S/ 689</strong></div></div>
-      </div>
-      <div class="product-card">
-        <div class="product-img-wrap"><div class="product-badge">★ Bestseller</div><div class="product-img" style="background-image:url('https://pixabay.com/get/g8b68973cc5aa0273d28161fce39967ea0afbb43eb112328b9f3e22472e12dccc38fad101ce677ca55fef33342970a503e5a7ed7df4cfe212d726fbff53935d95_1280.jpg')"></div></div>
-        <div class="product-info"><div class="tag">Línea Raíz</div><h3>Botas de Cuero</h3><div class="price">Desde <strong>S/ 549</strong></div></div>
-      </div>
-    </div>
-  </div>
-</section>
+      <nav aria-label="Navegación Principal">
+        <ul class="nav-menu">
+          <li><a href="#probador" class="nav-link active">El Armario</a></li>
+          <li><a href="#catalogo" class="nav-link">Colección AW26</a></li>
+          <li><a href="#lookbook" class="nav-link">Lookbook</a></li>
+          <li><a href="#artesania" class="nav-link">Herencia Andina</a></li>
+          <li><a href="#guia" class="nav-link">Guía & FAQ</a></li>
+        </ul>
+      </nav>
 
-<section class="section" id="lookbook">
-  <div class="section-inner">
-    <div class="s-label">Lookbook</div>
-    <h2 class="s-title">Así se lleva<br>Jalca.</h2>
-    <p class="s-desc">Estilismos reales. Casual-elegante en estado puro. Desliza →</p>
-    <div class="lookbook-scroll">
-      <div class="lb-item" style="background-image:url('https://pixabay.com/get/g72b496234a6fda4856c671accde1868682b5588a247badfbd9c85d0235af274e84df898de453a57b3bd3e15e9b50832c528c7a8f25f0a5958cab923a4d449942_1280.jpg')"><div class="lb-caption"><span>Sierra</span><strong>Chompa + Blazer</strong></div></div>
-      <div class="lb-item" style="background-image:url('https://pixabay.com/get/gedac8caf7c53ae9b0bfe234e10ac6a097b2570f2239aaceb0888b35108b15a990a643aa3260d082a918965d25ef434dade80377bf308ea6aa6b68c3fcf0802d6_1280.jpg')"><div class="lb-caption"><span>Ciudad</span><strong>Casual Smart</strong></div></div>
-      <div class="lb-item" style="background-image:url('https://pixabay.com/get/gac3020087418cabaad4d014996cf318cd24adef4041259d684e36e9920f5d9218a277f06ca8e81b5d02a6bac4c0e4296af0394220ed9f04a7a84ba65a27469dd_1280.jpg')"><div class="lb-caption"><span>Look Completo</span><strong>Casual-Elegante</strong></div></div>
-      <div class="lb-item" style="background-image:url('https://pixabay.com/get/g8f062a95a2e663e679c07ce1bafc343bd34ed89a2a70dfc107e962b036d77efb2f5738aaa46d77f601d90bc5cf4a3414c772dfba3e5d467f5284a1309ccf6422_1280.jpg')"><div class="lb-caption"><span>Raíz</span><strong>Clásico Joven</strong></div></div>
-      <div class="lb-item" style="background-image:url('https://pixabay.com/get/g156d7434f5f5b0b6abd078f3864b593bb3c469923ab38768f59dc6d601278bfa3bf99d38b3eced667436b9238cefd1d2dcb25b8bab00a2a1eccac1d853055b1f_1280.jpg')"><div class="lb-caption"><span>Ciudad</span><strong>Estilo Urbano</strong></div></div>
-    </div>
-  </div>
-</section>
-
-<section class="section" style="background:var(--surface)">
-  <div class="section-inner">
-    <div class="stats">
-      <div class="stat-card"><div class="stat-num"><em>+</em>1.2K</div><div class="stat-label">Clientes</div></div>
-      <div class="stat-card"><div class="stat-num">100<em>%</em></div><div class="stat-label">Alpaca peruana</div></div>
-      <div class="stat-card"><div class="stat-num">24<em>h</em></div><div class="stat-label">Envío express Lima</div></div>
-      <div class="stat-card"><div class="stat-num"><em>★</em>4.9</div><div class="stat-label">Reseñas</div></div>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="marca">
-  <div class="section-inner">
-    <div class="brand-grid">
-      <div class="brand-img-wrap">
-        <div class="brand-glow"></div>
-        <div class="brand-img" style="background-image:url('https://pixabay.com/get/g72b496234a6fda4856c671accde1868682b5588a247badfbd9c85d0235af274e84df898de453a57b3bd3e15e9b50832c528c7a8f25f0a5958cab923a4d449942_1280.jpg')"></div>
+      <div class="nav-actions">
+        <button class="btn-nav-bag" id="cartToggle" aria-label="Abrir bolsa de compras">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+          <span class="cart-badge-pill" id="cartBadge">1</span>
+        </button>
       </div>
-      <div class="brand-text">
-        <div class="s-label">Nuestro Origen</div>
-        <h3>Nacidos en<br><em>la jalca.</em></h3>
-        <p>La jalca es el pastizal altoandino que rodea Cajamarca — un ecosistema único entre los 3,000 y 4,000 metros. De ahí tomamos el nombre y la filosofía: resistencia, adaptación, belleza natural.</p>
-        <p>Trabajamos con artesanos cajamarquinos, lana de alpaca de la región y curtiembres locales. Cada prenda cuenta una historia de la sierra peruana pensada para el hombre joven de hoy.</p>
-        <div class="pills">
-          <span class="pill">🧵 Alpaca 100% peruana</span>
-          <span class="pill">🏔️ Confección local</span>
-          <span class="pill">🌱 Curtido vegetal</span>
-          <span class="pill">📦 Envíos a todo Perú</span>
+    </header>
+  </div>
+
+  <main>
+    <!-- ======================================================================
+         2. SECTION 1: BESPOKE WALK-IN WARDROBE & LIVE ATELIER (Higgsfield Masterpiece)
+         ====================================================================== -->
+    <section class="bespoke-atelier-section" id="probador">
+      <div class="container">
+        
+        <div class="bespoke-atelier-canvas">
+          
+          <!-- Atelier Header -->
+          <div class="atelier-main-header">
+            <div>
+              <span class="atelier-sub-badge">Haute Couture Digital Studio · Cajamarca</span>
+              <h1 class="atelier-headline">El Armario <em>& Probador en Vivo</em></h1>
+            </div>
+
+            <button class="btn-fold-closet" id="btnHeaderToggleCloset" style="padding:10px 22px; font-size:0.75rem;">
+              <span>🚪 Guardar Armario</span>
+            </button>
+          </div>
+
+          <!-- Master Grid: Model (Left) + Physical Walk-in Closet Cabinet (Right) -->
+          <div class="bespoke-wardrobe-grid">
+            
+            <!-- Left: Model Stage & Customizer Dock -->
+            <div class="model-stage-column">
+              
+              <!-- Portrait Model Stage -->
+              <div class="model-portrait-stage">
+                
+                <!-- Floating Status Badges -->
+                <div class="stage-top-pills">
+                  <span class="stage-pill" id="pillActiveGarment">The Cumbre | Baby Alpaca</span>
+                  <div style="display:flex; gap:8px;">
+                    <span class="stage-pill" id="pillActiveColor">
+                      <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#c4734a;margin-right:6px;border:1px solid rgba(255,255,255,0.4);"></span> Terracota Andino
+                    </span>
+                    <span class="stage-pill" id="pillActiveSize">Talla M</span>
+                  </div>
+                </div>
+
+                <!-- Live Model Image -->
+                <img src="imagenes/outfit-terracotta-knit.webp" id="modelFittingImg" alt="Modelo Vértice en Probador" fetchpriority="high">
+
+                <!-- Stage Bottom Overlay -->
+                <div class="stage-bottom-overlay">
+                  <div>
+                    <h2 class="stage-garment-title" id="stageGarmentTitle">The Cumbre | Baby Alpaca Pullover</h2>
+                    <div class="stage-garment-craft" id="stageGarmentCraft">100% Baby Alpaca de Alta Montaña · Hilado a Mano</div>
+                  </div>
+                  <div class="stage-garment-price" id="stageGarmentPrice">S/. 1,480.00</div>
+                </div>
+
+              </div>
+
+              <!-- DOCK DIRECTAMENTE DEBAJO DEL MODELO: COLORES, TALLAS Y BOTÓN YAPE -->
+              <div class="stage-customizer-dock">
+                
+                <!-- 1. Colores que ofrece la prenda -->
+                <div>
+                  <div class="dock-row-title">
+                    <span>🎨 1. Colores disponibles para esta prenda:</span>
+                    <strong id="dockColorLabel" style="color:var(--copper-light); text-transform:none;">Terracota Andino</strong>
+                  </div>
+                  <div class="dock-swatches-palette" id="dockColorsPalette">
+                    <!-- Rendered dynamically by JS -->
+                  </div>
+                </div>
+
+                <!-- 2. Tallas que ofrece la prenda -->
+                <div>
+                  <div class="dock-row-title">
+                    <span>📏 2. Selecciona la Talla:</span>
+                  </div>
+                  <div class="dock-sizes-palette" id="dockSizesPalette">
+                    <!-- Rendered dynamically by JS -->
+                  </div>
+                  <div class="dock-tailoring-note" id="dockTailoringNote">
+                    Talla M activa · Patronaje contemporáneo a 3,000 m.s.n.m. · Cajamarca.
+                  </div>
+                </div>
+
+                <!-- 3. Botón de Compra Directa con Yape -->
+                <button class="btn-dock-buy-yape" id="btnDockBuyYape">
+                  <span>AÑADIR A LA BOLSA Y PAGAR CON YAPE</span>
+                  <span>🛍️</span>
+                </button>
+
+                <!-- Botón Flotante para Re-abrir Armario si está oculto -->
+                <button class="btn-floating-reopen-closet" id="btnReopenCloset">
+                  🚪 Abrir Armario para Cambiar Prenda ✨
+                </button>
+
+              </div>
+
+            </div>
+
+            <!-- Right: THE PHYSICAL WALK-IN CLOSET CABINET -->
+            <div class="walkin-closet-cabinet" id="walkinClosetCabinet">
+              
+              <!-- Interior LED Light Bar -->
+              <div class="closet-led-top-strip"></div>
+
+              <div class="closet-cabinet-header">
+                <div class="closet-cabinet-title">
+                  <span>🚪 Armario de Ropa</span>
+                  <span style="font-size:0.75rem; color:var(--copper-light); font-weight:600;">(5 Prendas en Percha)</span>
+                </div>
+                <button class="btn-fold-closet" id="btnFoldCloset" title="Guardar armario">✕ Cerrar</button>
+              </div>
+
+              <p style="font-size:0.78rem; color:var(--text-dim); margin-top:-6px;">
+                ⚡ Haz clic en cualquier prenda colgada para vestir al modelo:
+              </p>
+
+              <!-- Perchero con Prendas Colgadas -->
+              <div class="closet-hangers-rail-matrix" id="closetHangersRail">
+                <!-- Rendered dynamically by JS with brass hooks -->
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         3. SECTION 2: BENTO PRODUCT CATALOG ("ANDEAN MODERNISM")
+         ====================================================================== -->
+    <section class="section" id="catalogo">
+      <div class="container">
+        
+        <div class="section-tag">Colección AW26</div>
+        <h2 class="section-title">Andean Modernism</h2>
+        <p class="section-desc">Cortes arquitectónicos, texturas de montaña y piezas atemporales confeccionadas en Cajamarca.</p>
+
+        <div class="bento-catalog-grid">
+          
+          <!-- Card 1 -->
+          <article class="bento-catalog-card">
+            <div class="bento-catalog-img">
+              <img src="imagenes/alpaca-knit.webp" alt="The Cumbre Baby Alpaca" loading="lazy">
+            </div>
+            <div style="font-size:0.65rem; color:var(--copper); font-weight:700; text-transform:uppercase;">Punto Fino · Cajamarca</div>
+            <h3 class="bento-catalog-title">The Cumbre Alpaca Pullover</h3>
+            <div class="bento-catalog-price">S/. 1,480.00</div>
+            
+            <div class="bento-catalog-footer">
+              <div class="size-selector-group">
+                <button class="size-btn">S</button>
+                <button class="size-btn active">M</button>
+                <button class="size-btn">L</button>
+              </div>
+              <button class="btn-add-quick" data-id="knit-1" data-name="The Cumbre Alpaca Pullover" data-price="1480" data-image="imagenes/alpaca-knit.webp">
+                + Bolsa
+              </button>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="bento-catalog-card">
+            <div class="bento-catalog-img">
+              <img src="imagenes/leather-jacket.webp" alt="Obsidian Leather Jacket" loading="lazy">
+            </div>
+            <div style="font-size:0.65rem; color:var(--copper); font-weight:700; text-transform:uppercase;">Cuero Genuino</div>
+            <h3 class="bento-catalog-title">Obsidian Leather Jacket</h3>
+            <div class="bento-catalog-price">S/. 2,800.00</div>
+            
+            <div class="bento-catalog-footer">
+              <div class="size-selector-group">
+                <button class="size-btn">S</button>
+                <button class="size-btn active">M</button>
+                <button class="size-btn">L</button>
+              </div>
+              <button class="btn-add-quick" data-id="jacket-1" data-name="Obsidian Leather Jacket" data-price="2800" data-image="imagenes/leather-jacket.webp">
+                + Bolsa
+              </button>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="bento-catalog-card">
+            <div class="bento-catalog-img">
+              <img src="imagenes/linen-blazer.webp" alt="Raw Linen Blazer" loading="lazy">
+            </div>
+            <div style="font-size:0.65rem; color:var(--copper); font-weight:700; text-transform:uppercase;">Sastrería Desestructurada</div>
+            <h3 class="bento-catalog-title">Raw Natural Linen Blazer</h3>
+            <div class="bento-catalog-price">S/. 1,150.00</div>
+            
+            <div class="bento-catalog-footer">
+              <div class="size-selector-group">
+                <button class="size-btn">S</button>
+                <button class="size-btn active">M</button>
+                <button class="size-btn">L</button>
+              </div>
+              <button class="btn-add-quick" data-id="blazer-1" data-name="Raw Natural Linen Blazer" data-price="1150" data-image="imagenes/linen-blazer.webp">
+                + Bolsa
+              </button>
+            </div>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="bento-catalog-card">
+            <div class="bento-catalog-img">
+              <img src="imagenes/wool-trousers.webp" alt="Andes Tailored Wool Trousers" loading="lazy">
+            </div>
+            <div style="font-size:0.65rem; color:var(--copper); font-weight:700; text-transform:uppercase;">Lana Andina</div>
+            <h3 class="bento-catalog-title">Andes Tailored Trousers</h3>
+            <div class="bento-catalog-price">S/. 750.00</div>
+            
+            <div class="bento-catalog-footer">
+              <div class="size-selector-group">
+                <button class="size-btn">38</button>
+                <button class="size-btn active">40</button>
+                <button class="size-btn">42</button>
+              </div>
+              <button class="btn-add-quick" data-id="trousers-1" data-name="Andes Tailored Trousers" data-price="750" data-image="imagenes/wool-trousers.webp">
+                + Bolsa
+              </button>
+            </div>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="bento-catalog-card">
+            <div class="bento-catalog-img">
+              <img src="imagenes/vertice-boots.webp" alt="Vértice Heritage Boot" loading="lazy">
+            </div>
+            <div style="font-size:0.65rem; color:var(--copper); font-weight:700; text-transform:uppercase;">Goodyear Welt</div>
+            <h3 class="bento-catalog-title">Vértice Heritage Boot</h3>
+            <div class="bento-catalog-price">S/. 980.00</div>
+            
+            <div class="bento-catalog-footer">
+              <div class="size-selector-group">
+                <button class="size-btn">40</button>
+                <button class="size-btn active">41</button>
+                <button class="size-btn">42</button>
+              </div>
+              <button class="btn-add-quick" data-id="boots-1" data-name="Vértice Heritage Boot" data-price="980" data-image="imagenes/vertice-boots.webp">
+                + Bolsa
+              </button>
+            </div>
+          </article>
+
+          <!-- Card 6 -->
+          <article class="bento-catalog-card" style="background:linear-gradient(145deg, #16151c 0%, #0c0b10 100%);">
+            <div class="bento-catalog-img">
+              <img src="imagenes/lookbook-1.webp" alt="Lookbook Estilismo" loading="lazy">
+            </div>
+            <div style="font-size:0.65rem; color:var(--copper); font-weight:700; text-transform:uppercase;">Editorial AW26</div>
+            <h3 class="bento-catalog-title">Lookbook Completo</h3>
+            <div class="bento-catalog-price">Estilismo y Siluetas</div>
+            
+            <div class="bento-catalog-footer">
+              <a href="#lookbook" class="btn-add-quick" style="width:100%; text-align:center; text-decoration:none;">
+                Ver Galería &rarr;
+              </a>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         4. SECTION 3: EDITORIAL LOOKBOOK
+         ====================================================================== -->
+    <section class="section lookbook-section" id="lookbook">
+      <div class="container">
+        
+        <div class="section-tag">Fotografía & Estilismo</div>
+        <h2 class="section-title">Lookbook: Andean Echoes</h2>
+        <p class="section-desc">Capturando el espíritu de la arquitectura andina y el diseño masculino contemporáneo.</p>
+
+        <div class="lookbook-editorial-grid">
+          
+          <div class="lookbook-editorial-card">
+            <img src="imagenes/lookbook-1.webp" alt="Lookbook 1">
+            <div class="lookbook-card-caption">
+              <h4>Editorial No. 1 | Urban Gallery</h4>
+              <span>Chaqueta de cuero obsidiana + Pantalón sastre</span>
+            </div>
+          </div>
+
+          <div class="lookbook-editorial-card">
+            <img src="imagenes/hero-model.webp" alt="Lookbook 2">
+            <div class="lookbook-card-caption">
+              <h4>Editorial No. 2 | Concrete Sunlight</h4>
+              <span>Chompa de alpaca baby terracota</span>
+            </div>
+          </div>
+
+          <div class="lookbook-editorial-card">
+            <img src="imagenes/artisan-origin.webp" alt="Lookbook 3">
+            <div class="lookbook-card-caption">
+              <h4>Editorial No. 3 | Telar Tradicional</h4>
+              <span>Manos maestras en Cajamarca</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         5. SECTION 4: CAJAMARCA ALPACA HERITAGE
+         ====================================================================== -->
+    <section class="section" id="artesania">
+      <div class="container">
+        
+        <div class="heritage-grid">
+          
+          <div class="heritage-img-wrap">
+            <img src="imagenes/artisan-origin.webp" alt="Artesanía Textil en Cajamarca">
+          </div>
+
+          <div>
+            <div class="section-tag">Nuestras Raíces</div>
+            <h2 class="section-title">Cajamarca's Soul: Alpaca Heritage</h2>
+            <p class="section-desc" style="max-width:100%;">
+              Nacidos en la jalca cajamarquina a más de 3,000 metros sobre el nivel del mar. Fusionamos la tradición milenaria del hilado andino con siluetas masculinas limpias y modernas.
+            </p>
+
+            <div class="heritage-features-list">
+              <div class="heritage-feature-box">
+                <h4>🦙 100% Baby Alpaca</h4>
+                <p>Termorreguladora, suave y sin picores, ideal para el frío andino y el clima urbano.</p>
+              </div>
+              <div class="heritage-feature-box">
+                <h4>🌱 Curtido Vegetal</h4>
+                <p>Pieles tratadas con extractos botánicos naturales sin cromo ni metales pesados.</p>
+              </div>
+              <div class="heritage-feature-box">
+                <h4>🏔️ Talleres Locales</h4>
+                <p>Confección justa directamente con comunidades de artesanos cajamarquinos.</p>
+              </div>
+              <div class="heritage-feature-box">
+                <h4>✨ Cero Plásticos</h4>
+                <p>Empaque biodegradable y botones de cuerno natural reciclado.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         6. SECTION 5: SIZE GUIDE & FAQ
+         ====================================================================== -->
+    <section class="section" id="guia" style="background:var(--bg-stage);">
+      <div class="container">
+        
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start;">
+          
+          <!-- Size Guide -->
+          <div>
+            <div class="section-tag">Guía de Tallas</div>
+            <h2 class="section-title" style="font-size:1.8rem;">Tu Medida Exacta</h2>
+            <p class="section-desc" style="margin-bottom:16px;">Patronaje regular contemporáneo.</p>
+            
+            <div style="overflow-x:auto;">
+              <table class="size-table">
+                <thead>
+                  <tr>
+                    <th>Talla</th>
+                    <th>Pecho (cm)</th>
+                    <th>Cintura (cm)</th>
+                    <th>Cadera (cm)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td><strong>XS</strong></td><td>86 - 91</td><td>70 - 75</td><td>86 - 91</td></tr>
+                  <tr><td><strong>S</strong></td><td>92 - 97</td><td>76 - 81</td><td>92 - 97</td></tr>
+                  <tr><td><strong>M</strong></td><td>98 - 103</td><td>82 - 87</td><td>98 - 103</td></tr>
+                  <tr><td><strong>L</strong></td><td>104 - 109</td><td>88 - 93</td><td>104 - 109</td></tr>
+                  <tr><td><strong>XL</strong></td><td>110 - 116</td><td>94 - 99</td><td>110 - 116</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- FAQ Accordion -->
+          <div>
+            <div class="section-tag">Preguntas Frecuentes</div>
+            <h2 class="section-title" style="font-size:1.8rem;">Envíos & Pagos</h2>
+            
+            <div class="faq-accordion">
+              <div class="faq-item active">
+                <div class="faq-head">
+                  <span>¿Cómo funciona el pago con Yape?</span>
+                  <span>+</span>
+                </div>
+                <div class="faq-body">
+                  Al confirmar tu compra se genera el código QR con el monto exacto. Escaneas desde tu app Yape al número 976 000 000 y tu pedido se procesa de inmediato.
+                </div>
+              </div>
+              <div class="faq-item">
+                <div class="faq-head">
+                  <span>¿Hacen envíos a Lima y provincias?</span>
+                  <span>+</span>
+                </div>
+                <div class="faq-body">
+                  Sí. Despachamos diariamente con Olva Courier y Shalom. Tiempo de entrega en Lima de 24 a 48h. Envío gratis en compras mayores a S/. 450.
+                </div>
+              </div>
+              <div class="faq-item">
+                <div class="faq-head">
+                  <span>¿Tienen showroom en Cajamarca?</span>
+                  <span>+</span>
+                </div>
+                <div class="faq-body">
+                  Contamos con Showroom privado en el centro de Cajamarca (Jr. Amazonas). Puedes probarte las prendas agendando cita por WhatsApp.
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================
+       7. SLIDE-OVER YAPE QR PAYMENT DRAWER
+       ======================================================================== -->
+  <div class="cart-overlay" id="cartOverlay" aria-hidden="true">
+    <aside class="yape-checkout-drawer" role="dialog" aria-label="Bolsa de Compras y Pago Yape">
+      
+      <div class="drawer-header">
+        <div class="drawer-title">Bolsa & Pago Yape Seguro</div>
+        <button class="btn-close-drawer" id="closeCart" aria-label="Cerrar">&times;</button>
+      </div>
+
+      <div class="drawer-body">
+        
+        <!-- Yape QR Graphic Card -->
+        <div class="yape-qr-box">
+          <span class="yape-logo-tag">🟣 Paga Seguro con Yape</span>
+          
+          <div class="qr-graphic-frame">
+            <svg viewBox="0 0 100 100" fill="#040406">
+              <rect width="100" height="100" fill="#ffffff" rx="8"/>
+              <rect x="10" y="10" width="26" height="26" fill="#720e9e"/>
+              <rect x="15" y="15" width="16" height="16" fill="#ffffff"/>
+              <rect x="19" y="19" width="8" height="8" fill="#720e9e"/>
+              <rect x="64" y="10" width="26" height="26" fill="#720e9e"/>
+              <rect x="69" y="15" width="16" height="16" fill="#ffffff"/>
+              <rect x="73" y="19" width="8" height="8" fill="#720e9e"/>
+              <rect x="10" y="64" width="26" height="26" fill="#720e9e"/>
+              <rect x="15" y="69" width="16" height="16" fill="#ffffff"/>
+              <rect x="19" y="73" width="8" height="8" fill="#720e9e"/>
+              <!-- Data Dots -->
+              <rect x="42" y="14" width="6" height="6" fill="#720e9e"/>
+              <rect x="52" y="24" width="6" height="6" fill="#720e9e"/>
+              <rect x="42" y="38" width="16" height="16" fill="#f59e0b"/>
+              <rect x="64" y="44" width="8" height="8" fill="#720e9e"/>
+              <rect x="44" y="68" width="8" height="8" fill="#720e9e"/>
+              <rect x="60" y="68" width="12" height="12" fill="#720e9e"/>
+              <rect x="76" y="68" width="14" height="14" fill="#720e9e"/>
+            </svg>
+          </div>
+
+          <div class="yape-phone-num">976 000 000</div>
+          <div style="font-size:0.72rem; color:var(--text-dim); margin-top:2px;">Titular: Frank Abanto (VÉRTICE)</div>
+        </div>
+
+        <!-- Customer Details Inputs -->
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <input type="text" id="clientNameInput" placeholder="Tu Nombre Completo" style="padding:10px 14px; border-radius:8px; background:rgba(255,255,255,0.05); border:1px solid var(--border-glass); color:#fff; font-size:0.8rem;">
+          <input type="tel" id="clientPhoneInput" placeholder="Tu Número de WhatsApp" style="padding:10px 14px; border-radius:8px; background:rgba(255,255,255,0.05); border:1px solid var(--border-glass); color:#fff; font-size:0.8rem;">
+        </div>
+
+        <!-- Cart Items List -->
+        <div style="font-size:0.75rem; font-weight:700; color:var(--text-dim); text-transform:uppercase;">Prendas Seleccionadas:</div>
+        <div id="cartItemsList" style="display:flex; flex-direction:column; gap:8px;"></div>
+
+      </div>
+
+      <div class="drawer-footer">
+        <div class="drawer-subtotal">
+          <span>Total a Pagar en Yape:</span>
+          <strong id="cartTotalAmount">S/. 1,480.00</strong>
+        </div>
+        <button class="btn-confirm-yape" id="btnConfirmYape">CONFIRMAR PAGO CON YAPE</button>
+      </div>
+
+    </aside>
+  </div>
+
+  <!-- ========================================================================
+       8. LUXURY BRAND FOOTER
+       ======================================================================== -->
+  <footer class="footer">
+    <div class="container">
+      
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#probador" class="nav-brand">VÉRTICE<span>.</span></a>
+          <p>Sastrería contemporánea y punto andino masculino. Diseñado con orgullo y raíces en Cajamarca, Perú.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Colecciones</h4>
+          <ul>
+            <li><a href="#probador">Armario & Probador AW26</a></li>
+            <li><a href="#catalogo">Andean Modernism</a></li>
+            <li><a href="#lookbook">Lookbook Editorial</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Soporte</h4>
+          <ul>
+            <li><a href="#guia">Guía de Tallas</a></li>
+            <li><a href="#guia">Envíos y Entregas</a></li>
+            <li><a href="#artesania">Showroom Cajamarca</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="mailto:contacto@verticemoda.pe">contacto@verticemoda.pe</a></li>
+            <li><a href="tel:+51976000000">+51 (076) 364-890</a></li>
+            <li><a href="#">Cajamarca, Perú 🇵🇪</a></li>
+          </ul>
         </div>
       </div>
-    </div>
-  </div>
-</section>
 
-<section class="section" style="background:var(--surface)">
-  <div class="section-inner">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start">
-      <div>
-        <div class="s-label">FAQ</div>
-        <h2 class="s-title" style="font-size:1.8rem">Resolvemos<br>tus dudas.</h2>
-        <div class="faq-grid" style="margin-top:28px">
-          <div class="faq-card" onclick="this.classList.toggle('open')"><h4>¿Envíos a todo el Perú? <span>+</span></h4><p>Sí. Olva Courier: Lima 2-3 días, provincia 4-7 días. Envío gratis en compras mayores a S/ 400.</p></div>
-          <div class="faq-card" onclick="this.classList.toggle('open')"><h4>¿Puedo probarme antes? <span>+</span></h4><p>Showroom en Cajamarca (Jr. Amazonas 245). Pide cita por WhatsApp y te asesoramos con toda la colección.</p></div>
-          <div class="faq-card" onclick="this.classList.toggle('open')"><h4>¿La alpaca pica? <span>+</span></h4><p>No. Usamos alpaca baby — la fibra más suave, hipoalergénica y más cálida que la lana de oveja.</p></div>
-          <div class="faq-card" onclick="this.classList.toggle('open')"><h4>¿Cambios y devoluciones? <span>+</span></h4><p>15 días para cambios de talla, 7 días para devoluciones. La prenda debe estar sin usar y con etiquetas originales.</p></div>
-        </div>
+      <div class="footer-bottom">
+        <span>© 2026 VÉRTICE. Todos los derechos reservados. RUC: 10723456789</span>
+        <span>Diseñado por Frank Abanto · Cajamarca, Perú</span>
       </div>
-      <div>
-        <div class="s-label">Guía de Tallas</div>
-        <h2 class="s-title" style="font-size:1.8rem">Tu ajuste<br>perfecto.</h2>
-        <div class="size-guide" style="margin-top:28px">
-          <table class="size-table">
-            <thead><tr><th>Talla</th><th>Pecho</th><th>Cintura</th><th>Cadera</th></tr></thead>
-            <tbody>
-              <tr><td>S</td><td>91-97 cm</td><td>76-81 cm</td><td>91-97 cm</td></tr>
-              <tr><td>M</td><td>97-102 cm</td><td>81-86 cm</td><td>97-102 cm</td></tr>
-              <tr><td>L</td><td>102-107 cm</td><td>86-91 cm</td><td>102-107 cm</td></tr>
-              <tr><td>XL</td><td>107-112 cm</td><td>91-96 cm</td><td>107-112 cm</td></tr>
-              <tr><td>XXL</td><td>112-117 cm</td><td>96-101 cm</td><td>112-117 cm</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+
     </div>
-  </div>
-</section>
+  </footer>
 
-<section class="section" id="newsletter">
-  <div class="section-inner">
-    <div class="nl-wrap">
-      <div class="s-label">Acceso Anticipado</div>
-      <h2 class="s-title" style="margin-bottom:8px">Únete a Jalca.</h2>
-      <p style="color:var(--text-dim);max-width:400px;margin:0 auto 28px;font-size:.85rem">Nuevas colecciones, drops limitados y eventos en Cajamarca. Sin spam — solo lo que importa.</p>
-      <form class="nl-form" id="newsForm">
-        <input type="email" placeholder="tu@email.com" required>
-        <button type="submit">Unirme</button>
-      </form>
-    </div>
-  </div>
-</section>
-
-<footer class="footer">
-  <div class="footer-grid">
-    <div class="footer-brand"><a href="#" class="logo">JALCA<span class="logo-dot"></span></a><p>Moda casual-elegante desde Cajamarca, Perú. Diseño, calidad y raíces andinas desde 2024.</p></div>
-    <div class="footer-col"><h4>Colección</h4><ul><li><a href="#">Sierra</a></li><li><a href="#">Ciudad</a></li><li><a href="#">Raíz</a></li><li><a href="#">Ver Todo</a></li></ul></div>
-    <div class="footer-col"><h4>Ayuda</h4><ul><li><a href="#">Guía de Tallas</a></li><li><a href="#">Envíos</a></li><li><a href="#">Cambios</a></li><li><a href="#">WhatsApp</a></li></ul></div>
-    <div class="footer-col"><h4>Legal</h4><ul><li><a href="#">Privacidad</a></li><li><a href="#">Términos</a></li><li><a href="#">Cookies</a></li></ul></div>
-  </div>
-  <div class="footer-bottom"><span>© 2026 Jalca. Cajamarca, Perú.</span><span>RUC: 10723456789</span></div>
-</footer>
-
-<button class="btt" id="btt">↑</button>
-
-<div class="modal-overlay" id="modal">
-  <div class="modal-content">
-    <button class="modal-close" id="modalClose">✕</button>
-    <div class="modal-img" id="modalImg"></div>
-    <div class="modal-details">
-      <div class="tag" id="modalTag"></div>
-      <h3 id="modalTitle"></h3>
-      <div class="price">Desde <strong id="modalPrice"></strong></div>
-      <p class="modal-desc" id="modalDesc"></p>
-      <div class="size-pills">
-        <span class="size-pill active" onclick="document.querySelectorAll('.size-pill').forEach(s=>s.classList.remove('active'));this.classList.add('active')">S</span>
-        <span class="size-pill" onclick="document.querySelectorAll('.size-pill').forEach(s=>s.classList.remove('active'));this.classList.add('active')">M</span>
-        <span class="size-pill" onclick="document.querySelectorAll('.size-pill').forEach(s=>s.classList.remove('active'));this.classList.add('active')">L</span>
-        <span class="size-pill" onclick="document.querySelectorAll('.size-pill').forEach(s=>s.classList.remove('active'));this.classList.add('active')">XL</span>
-        <span class="size-pill" onclick="document.querySelectorAll('.size-pill').forEach(s=>s.classList.remove('active'));this.classList.add('active')">XXL</span>
-      </div>
-      <button class="modal-btn" id="modalCta">Añadir al Carrito</button>
-    </div>
-  </div>
-</div>
-
-<script>
-const n=document.getElementById('nav'),mt=document.getElementById('menuToggle'),nl=document.getElementById('navLinks');
-mt.addEventListener('click',()=>n.classList.toggle('open'));
-nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>n.classList.remove('open')));
-
-document.getElementById('newsForm').addEventListener('submit',e=>{
-  e.preventDefault();const inp=e.target.querySelector('input'),b=e.target.querySelector('button');
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(inp.value)){inp.style.borderColor='#e74c3c';return}
-  inp.style.borderColor='';b.textContent='✓ ¡Bienvenido!';b.style.background='#2A8C5A';
-  setTimeout(()=>{b.textContent='Unirme';b.style.background=''},3000);
-});
-
-const btt=document.getElementById('btt');
-window.addEventListener('scroll',()=>btt.classList.toggle('visible',scrollY>600));
-btt.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
-
-const ro=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');ro.unobserve(x.target)}})},{threshold:.1});
-document.querySelectorAll('.bento-item,.product-card,.stat-card,.brand-grid,.faq-card').forEach(el=>{el.classList.add('reveal');ro.observe(el)});
-
-const prods=[
-  {tag:'Línea Sierra',title:'Chompa de Alpaca',price:'S/ 459',img:"url('https://pixabay.com/get/g8d8f50b84b96d89705f866832400e3882b4954bd1ad02620b2ab61c2e6a7fc512a830ff27871e7ebbc1cbb3c433112db72e0c68530cf4b652ff6b8cd94ed5477_1280.jpg')",desc:'Chompa tejida a mano con 100% alpaca baby peruana. Peso medio, ideal para el clima de la sierra. Cuello redondo, puños elásticos. Disponible en gris, marrón y crema.'},
-  {tag:'Línea Ciudad',title:'Blazer de Lino',price:'S/ 689',img:"url('https://pixabay.com/get/g156d7434f5f5b0b6abd078f3864b593bb3c469923ab38768f59dc6d601278bfa3bf99d38b3eced667436b9238cefd1d2dcb25b8bab00a2a1eccac1d853055b1f_1280.jpg')",desc:'Blazer desestructurado de lino peruano. Perfecto para el clima templado de Cajamarca. Combínalo con jeans o chinos para un look casual-elegante sin esfuerzo.'},
-  {tag:'Línea Raíz',title:'Botas de Cuero',price:'S/ 549',img:"url('https://pixabay.com/get/g8b68973cc5aa0273d28161fce39967ea0afbb43eb112328b9f3e22472e12dccc38fad101ce677ca55fef33342970a503e5a7ed7df4cfe212d726fbff53935d95_1280.jpg')",desc:'Botas de cuero curtido al vegetal por artesanos cajamarquinos. Suela cosida Goodyear. Envejecen con carácter. La inversión que dura años.'}
-];
-
-const modal=document.getElementById('modal'),mc=document.getElementById('modalClose');
-document.querySelectorAll('.product-card').forEach((card,i)=>{card.addEventListener('click',()=>{if(i<prods.length){const p=prods[i];
-  document.getElementById('modalImg').style.backgroundImage=p.img;
-  document.getElementById('modalTag').textContent=p.tag;
-  document.getElementById('modalTitle').textContent=p.title;
-  document.getElementById('modalPrice').textContent=p.price;
-  document.getElementById('modalDesc').textContent=p.desc;
-  modal.classList.add('open');document.body.style.overflow='hidden';}})});
-mc.addEventListener('click',()=>{modal.classList.remove('open');document.body.style.overflow=''});
-modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('open'),document.body.style.overflow=''});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('open'))modal.classList.remove('open'),document.body.style.overflow=''});
-document.getElementById('modalCta').addEventListener('click',function(){this.textContent='✓ Añadido';this.style.background='#2A8C5A';setTimeout(()=>{this.textContent='Añadir al Carrito';this.style.background=''},2000)});
-</script>
+  <!-- Scripts -->
+  <script src="js/supabase-client.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
