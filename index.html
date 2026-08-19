@@ -6,14 +6,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
-  <title>VÉRTICE — Bespoke Walk-in Wardrobe & Live Atelier | AW26</title>
-  <meta name="description" content="VÉRTICE — El Vestidor y Armario Digital de Alta Costura Masculina. Viste al modelo en vivo, personaliza tonos y tallas, y compra seguro con Yape QR. Cajamarca, Perú.">
+  <title>VÉRTICE — Alta Sastrería Andina & Probador Virtual | AW26</title>
+  <meta name="description" content="VÉRTICE — Sastrería masculina contemporánea y punto fino andino. Viste al modelo en vivo, personaliza colores y tallas, y paga seguro con Yape QR. Cajamarca, Perú.">
   <meta name="author" content="Frank Abanto">
-  <meta name="theme-color" content="#040406">
+  <meta name="theme-color" content="#070709">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="VÉRTICE — Bespoke Walk-in Wardrobe & Live Atelier">
-  <meta property="og:description" content="Armario interactivo de lujo: escoge del perchero, viste al modelo y personaliza colores y tallas en vivo.">
+  <meta property="og:title" content="VÉRTICE — Alta Sastrería Andina & Probador Virtual">
+  <meta property="og:description" content="Probador virtual interactivo: escoge prendas, personaliza colores y compra con Yape QR.">
   <meta property="og:type" content="website">
 
   <!-- Favicon -->
@@ -27,15 +27,15 @@
 </head>
 <body>
 
-  <!-- Ambient Light Haloes -->
-  <div class="ambient-glow-1" aria-hidden="true"></div>
-  <div class="ambient-glow-2" aria-hidden="true"></div>
+  <!-- Ambient Light Glows -->
+  <div class="ambient-glow-left" aria-hidden="true"></div>
+  <div class="ambient-glow-right" aria-hidden="true"></div>
 
   <!-- Toast Container -->
   <div class="toast-container" id="toastContainer" aria-live="polite"></div>
 
   <!-- ========================================================================
-       1. FLOATING LUXURY PILL NAVBAR
+       1. FLOATING PILL NAVBAR
        ======================================================================== -->
   <div class="nav-wrapper">
     <header class="floating-nav">
@@ -43,10 +43,10 @@
 
       <nav aria-label="Navegación Principal">
         <ul class="nav-menu">
-          <li><a href="#probador" class="nav-link active">El Armario</a></li>
+          <li><a href="#probador" class="nav-link active">Probador</a></li>
           <li><a href="#catalogo" class="nav-link">Colección AW26</a></li>
           <li><a href="#lookbook" class="nav-link">Lookbook</a></li>
-          <li><a href="#artesania" class="nav-link">Herencia Andina</a></li>
+          <li><a href="#artesania" class="nav-link">Herencia</a></li>
           <li><a href="#guia" class="nav-link">Guía & FAQ</a></li>
         </ul>
       </nav>
@@ -64,125 +64,85 @@
 
   <main>
     <!-- ======================================================================
-         2. SECTION 1: BESPOKE WALK-IN WARDROBE & LIVE ATELIER (Higgsfield Masterpiece)
+         2. SECTION 1: HERO / PROBADOR VIRTUAL INTERACTIVO (Exacto a la maqueta)
          ====================================================================== -->
-    <section class="bespoke-atelier-section" id="probador">
+    <section class="hero-probador-section" id="probador">
       <div class="container">
         
-        <div class="bespoke-atelier-canvas">
+        <div class="probador-hero-card">
           
-          <!-- Atelier Header -->
-          <div class="atelier-main-header">
-            <div>
-              <span class="atelier-sub-badge">Haute Couture Digital Studio · Cajamarca</span>
-              <h1 class="atelier-headline">El Armario <em>& Probador en Vivo</em></h1>
+          <!-- Columna Izquierda: Viewport del Modelo -->
+          <div class="model-viewport-container">
+            
+            <div class="model-top-badge-row">
+              <span class="model-collection-tag">Colección AW26</span>
+              <div class="model-live-indicator">
+                <span class="live-pulse-dot"></span>
+                <span>Probador en Vivo</span>
+              </div>
             </div>
 
-            <button class="btn-fold-closet" id="btnHeaderToggleCloset" style="padding:10px 22px; font-size:0.75rem;">
-              <span>🚪 Guardar Armario</span>
-            </button>
+            <!-- Imagen del Modelo en Tiempo Real -->
+            <img src="imagenes/outfit-terracotta-knit.webp" id="modelFittingImg" alt="Modelo Vértice en Probador" fetchpriority="high">
+
+            <div class="model-bottom-info-card">
+              <div>
+                <h2 class="model-garment-title-big" id="modelTitleDisplay">The Cumbre | Baby Alpaca Pullover</h2>
+                <div class="model-garment-craft-tag" id="modelCraftDisplay">100% Baby Alpaca cajamarquina · Hilado tradicional a mano</div>
+              </div>
+              <div class="model-garment-price-big" id="modelPriceDisplay">S/. 1,480.00</div>
+            </div>
+
           </div>
 
-          <!-- Master Grid: Model (Left) + Physical Walk-in Closet Cabinet (Right) -->
-          <div class="bespoke-wardrobe-grid">
+          <!-- Columna Derecha: Panel de Configuración & Armario -->
+          <div class="probador-customizer-column">
             
-            <!-- Left: Model Stage & Customizer Dock -->
-            <div class="model-stage-column">
-              
-              <!-- Portrait Model Stage -->
-              <div class="model-portrait-stage">
-                
-                <!-- Floating Status Badges -->
-                <div class="stage-top-pills">
-                  <span class="stage-pill" id="pillActiveGarment">The Cumbre | Baby Alpaca</span>
-                  <div style="display:flex; gap:8px;">
-                    <span class="stage-pill" id="pillActiveColor">
-                      <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#c4734a;margin-right:6px;border:1px solid rgba(255,255,255,0.4);"></span> Terracota Andino
-                    </span>
-                    <span class="stage-pill" id="pillActiveSize">Talla M</span>
-                  </div>
-                </div>
-
-                <!-- Live Model Image -->
-                <img src="imagenes/outfit-terracotta-knit.webp" id="modelFittingImg" alt="Modelo Vértice en Probador" fetchpriority="high">
-
-                <!-- Stage Bottom Overlay -->
-                <div class="stage-bottom-overlay">
-                  <div>
-                    <h2 class="stage-garment-title" id="stageGarmentTitle">The Cumbre | Baby Alpaca Pullover</h2>
-                    <div class="stage-garment-craft" id="stageGarmentCraft">100% Baby Alpaca de Alta Montaña · Hilado a Mano</div>
-                  </div>
-                  <div class="stage-garment-price" id="stageGarmentPrice">S/. 1,480.00</div>
-                </div>
-
-              </div>
-
-              <!-- DOCK DIRECTAMENTE DEBAJO DEL MODELO: COLORES, TALLAS Y BOTÓN YAPE -->
-              <div class="stage-customizer-dock">
-                
-                <!-- 1. Colores que ofrece la prenda -->
-                <div>
-                  <div class="dock-row-title">
-                    <span>🎨 1. Colores disponibles para esta prenda:</span>
-                    <strong id="dockColorLabel" style="color:var(--copper-light); text-transform:none;">Terracota Andino</strong>
-                  </div>
-                  <div class="dock-swatches-palette" id="dockColorsPalette">
-                    <!-- Rendered dynamically by JS -->
-                  </div>
-                </div>
-
-                <!-- 2. Tallas que ofrece la prenda -->
-                <div>
-                  <div class="dock-row-title">
-                    <span>📏 2. Selecciona la Talla:</span>
-                  </div>
-                  <div class="dock-sizes-palette" id="dockSizesPalette">
-                    <!-- Rendered dynamically by JS -->
-                  </div>
-                  <div class="dock-tailoring-note" id="dockTailoringNote">
-                    Talla M activa · Patronaje contemporáneo a 3,000 m.s.n.m. · Cajamarca.
-                  </div>
-                </div>
-
-                <!-- 3. Botón de Compra Directa con Yape -->
-                <button class="btn-dock-buy-yape" id="btnDockBuyYape">
-                  <span>AÑADIR A LA BOLSA Y PAGAR CON YAPE</span>
-                  <span>🛍️</span>
-                </button>
-
-                <!-- Botón Flotante para Re-abrir Armario si está oculto -->
-                <button class="btn-floating-reopen-closet" id="btnReopenCloset">
-                  🚪 Abrir Armario para Cambiar Prenda ✨
-                </button>
-
-              </div>
-
-            </div>
-
-            <!-- Right: THE PHYSICAL WALK-IN CLOSET CABINET -->
-            <div class="walkin-closet-cabinet" id="walkinClosetCabinet">
-              
-              <!-- Interior LED Light Bar -->
-              <div class="closet-led-top-strip"></div>
-
-              <div class="closet-cabinet-header">
-                <div class="closet-cabinet-title">
-                  <span>🚪 Armario de Ropa</span>
-                  <span style="font-size:0.75rem; color:var(--copper-light); font-weight:600;">(5 Prendas en Percha)</span>
-                </div>
-                <button class="btn-fold-closet" id="btnFoldCloset" title="Guardar armario">✕ Cerrar</button>
-              </div>
-
-              <p style="font-size:0.78rem; color:var(--text-dim); margin-top:-6px;">
-                ⚡ Haz clic en cualquier prenda colgada para vestir al modelo:
+            <div>
+              <span class="customizer-header-tag" id="customizerTag">Punto Fino · Cajamarca</span>
+              <h1 class="customizer-main-title" id="customizerTitle">The Cumbre | Baby Alpaca Pullover</h1>
+              <div class="customizer-price-display" id="customizerPrice">S/. 1,480.00</div>
+              <p class="customizer-desc-text" id="customizerDesc">
+                Fibra noble termorreguladora de alta montaña a 3,000 m.s.n.m. Textura ultraligera, suave y sin sensación de picor.
               </p>
-
-              <!-- Perchero con Prendas Colgadas -->
-              <div class="closet-hangers-rail-matrix" id="closetHangersRail">
-                <!-- Rendered dynamically by JS with brass hooks -->
-              </div>
-
             </div>
+
+            <!-- 1. Armario: Selector de Prenda -->
+            <div>
+              <div class="control-block-label">
+                <span>1. Elige una prenda del armario:</span>
+              </div>
+              <div class="wardrobe-thumbs-matrix" id="wardrobeThumbnails">
+                <!-- Rendered dynamically by JS -->
+              </div>
+            </div>
+
+            <!-- 2. Selector de Color -->
+            <div>
+              <div class="control-block-label">
+                <span>2. Color de la prenda:</span>
+                <strong id="colorLabelDisplay" style="color:var(--copper-light); text-transform:none;">Terracota Andino</strong>
+              </div>
+              <div class="color-swatches-row" id="colorSwatchesContainer">
+                <!-- Rendered dynamically by JS -->
+              </div>
+            </div>
+
+            <!-- 3. Selector de Talla -->
+            <div>
+              <div class="control-block-label">
+                <span>3. Talla:</span>
+              </div>
+              <div class="size-pills-row" id="sizePillsContainer">
+                <!-- Rendered dynamically by JS -->
+              </div>
+            </div>
+
+            <!-- 4. Botón de Compra Directa con Yape -->
+            <button class="btn-yape-buy-action" id="btnBuyWithYape">
+              <span>COMPRAR AHORA CON YAPE (S/. 1,480.00)</span>
+              <span>⚡</span>
+            </button>
 
           </div>
 
@@ -309,7 +269,7 @@
           </article>
 
           <!-- Card 6 -->
-          <article class="bento-catalog-card" style="background:linear-gradient(145deg, #16151c 0%, #0c0b10 100%);">
+          <article class="bento-catalog-card" style="background:linear-gradient(145deg, #18171c 0%, #0d0c10 100%);">
             <div class="bento-catalog-img">
               <img src="imagenes/lookbook-1.webp" alt="Lookbook Estilismo" loading="lazy">
             </div>
@@ -417,7 +377,7 @@
     <!-- ======================================================================
          6. SECTION 5: SIZE GUIDE & FAQ
          ====================================================================== -->
-    <section class="section" id="guia" style="background:var(--bg-stage);">
+    <section class="section" id="guia" style="background:var(--bg-surface);">
       <div class="container">
         
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start;">
@@ -509,7 +469,7 @@
           <span class="yape-logo-tag">🟣 Paga Seguro con Yape</span>
           
           <div class="qr-graphic-frame">
-            <svg viewBox="0 0 100 100" fill="#040406">
+            <svg viewBox="0 0 100 100" fill="#070709">
               <rect width="100" height="100" fill="#ffffff" rx="8"/>
               <rect x="10" y="10" width="26" height="26" fill="#720e9e"/>
               <rect x="15" y="15" width="16" height="16" fill="#ffffff"/>
@@ -537,8 +497,8 @@
 
         <!-- Customer Details Inputs -->
         <div style="display:flex; flex-direction:column; gap:8px;">
-          <input type="text" id="clientNameInput" placeholder="Tu Nombre Completo" style="padding:10px 14px; border-radius:8px; background:rgba(255,255,255,0.05); border:1px solid var(--border-glass); color:#fff; font-size:0.8rem;">
-          <input type="tel" id="clientPhoneInput" placeholder="Tu Número de WhatsApp" style="padding:10px 14px; border-radius:8px; background:rgba(255,255,255,0.05); border:1px solid var(--border-glass); color:#fff; font-size:0.8rem;">
+          <input type="text" id="clientNameInput" placeholder="Tu Nombre Completo" style="padding:10px 14px; border-radius:8px; background:rgba(255,255,255,0.05); border:1px solid var(--border-subtle); color:#fff; font-size:0.8rem;">
+          <input type="tel" id="clientPhoneInput" placeholder="Tu Número de WhatsApp" style="padding:10px 14px; border-radius:8px; background:rgba(255,255,255,0.05); border:1px solid var(--border-subtle); color:#fff; font-size:0.8rem;">
         </div>
 
         <!-- Cart Items List -->
@@ -573,7 +533,7 @@
         <div class="footer-col">
           <h4>Colecciones</h4>
           <ul>
-            <li><a href="#probador">Armario & Probador AW26</a></li>
+            <li><a href="#probador">Probador AW26</a></li>
             <li><a href="#catalogo">Andean Modernism</a></li>
             <li><a href="#lookbook">Lookbook Editorial</a></li>
           </ul>

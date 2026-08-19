@@ -1,29 +1,27 @@
 /**
- * VÉRTICE — Walk-in Closet & Live Model Atelier (Higgsfield Level)
- * Interactive logic:
- * 1. Physical closet cabinet on the right with brass-hanging luxury garments.
- * 2. Clicking any garment:
- *    - Model immediately dresses with that piece in full studio resolution.
- *    - Closet folds/hides smoothly into the floating "Abrir Armario" trigger.
- *    - The customizer dock directly under the model updates colors, sizes, and price.
- * 3. Clicking any color swatch under the model live-tints the garment.
- * 4. Clicking "Abrir Armario / Cambiar Prenda" unfolds the walk-in closet instantly.
+ * VÉRTICE — Probador Virtual Interactivo & Checkout Yape
+ * Lógica fiel a la maqueta oficial (ver-diseno.html):
+ * - Selección de prendas en el armario interactivo (viste al modelo en vivo).
+ * - Selector de color reactivo con filtro CSS en el modelo.
+ * - Selector de tallas (S, M, L, XL).
+ * - Checkout directo con Yape QR & Supabase.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   // --------------------------------------------------------------------------
-  // 1. Colección del Armario
+  // 1. Base de Datos de Prendas del Probador
   // --------------------------------------------------------------------------
   const closetDatabase = {
     'alpaca-sweater': {
       id: 'alpaca-sweater',
       name: 'The Cumbre | Baby Alpaca Pullover',
-      category: 'Punto Fino Cajamarquino',
+      category: 'Punto Fino · Cajamarca',
       price: 1480,
-      material: '100% Baby Alpaca de Alta Montaña · Hilado a Mano',
+      material: '100% Baby Alpaca cajamarquina · Hilado tradicional a mano',
+      desc: 'Fibra noble termorreguladora de alta montaña a 3,000 m.s.n.m. Textura ultraligera, suave y sin sensación de picor.',
       image: 'imagenes/outfit-terracotta-knit.webp',
       thumb: 'imagenes/alpaca-knit.webp',
-      sizes: ['XS', 'S', 'M', 'L', 'XL'],
+      sizes: ['S', 'M', 'L', 'XL'],
       colors: [
         { name: 'Terracota Andino', hex: '#c4734a', filter: 'none' },
         { name: 'Negro Obsidiana', hex: '#16151a', filter: 'grayscale(1) brightness(0.68) contrast(1.2)' },
@@ -35,9 +33,10 @@ document.addEventListener('DOMContentLoaded', () => {
     'leather-jacket': {
       id: 'leather-jacket',
       name: 'Obsidian | Minimalist Moto Jacket',
-      category: 'Cuero Genuino',
+      category: 'Cuero Genuino · Curtido Vegetal',
       price: 2800,
-      material: 'Cuero Vacuno Curtido Vegetal · Níquel Satinado',
+      material: '100% Cuero Vacuno de Grano Completo · Herrajes en Níquel',
+      desc: 'Corte anatómico moderno tratado con extractos botánicos libres de cromo. Forro térmico de seda transpirable.',
       image: 'imagenes/outfit-leather-jacket.webp',
       thumb: 'imagenes/leather-jacket.webp',
       sizes: ['S', 'M', 'L', 'XL'],
@@ -52,7 +51,8 @@ document.addEventListener('DOMContentLoaded', () => {
       name: 'Arena | Raw Natural Linen Blazer',
       category: 'Sastrería Desestructurada',
       price: 1150,
-      material: '100% Lino Orgánico sin Hombreras',
+      material: '100% Lino Orgánico Europeo sin Hombreras',
+      desc: 'Silueta fluida con caída relajada para clima templado. Textura rústica refinada con botones de cuerno natural reciclado.',
       image: 'imagenes/outfit-linen-blazer.webp',
       thumb: 'imagenes/linen-blazer.webp',
       sizes: ['S', 'M', 'L', 'XL'],
@@ -65,9 +65,10 @@ document.addEventListener('DOMContentLoaded', () => {
     'wool-trousers': {
       id: 'wool-trousers',
       name: 'Andes | Tailored Wool Trousers',
-      category: 'Pantalón Sastre',
+      category: 'Pantalón Sastre · Lana Andina',
       price: 750,
-      material: 'Lana Andina con Pinzas Suaves',
+      material: 'Lana Andina Peinada con Pinzas Suaves',
+      desc: 'Patronaje cónico contemporáneo con ajuste perfecto en cintura y caída limpia sobre el calzado.',
       image: 'imagenes/outfit-wool-trousers.webp',
       thumb: 'imagenes/wool-trousers.webp',
       sizes: ['38', '40', '42', '44'],
@@ -80,9 +81,10 @@ document.addEventListener('DOMContentLoaded', () => {
     'vertice-boots': {
       id: 'vertice-boots',
       name: 'Heritage | Vértice Goodyear Boots',
-      category: 'Calzado Artesanal',
+      category: 'Calzado Artesanal · Goodyear Welt',
       price: 980,
-      material: 'Construcción Goodyear Welt & Cuero Vacuno',
+      material: 'Construcción Goodyear Welt & Suela de Caucho Natural',
+      desc: 'Cosido a mano para máxima durabilidad y resistencia al agua en senderos andinos y asfalto urbano.',
       image: 'imagenes/outfit-leather-jacket.webp',
       thumb: 'imagenes/vertice-boots.webp',
       sizes: ['39', '40', '41', '42', '43'],
@@ -93,15 +95,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  // Estado
+  // Estado del Probador
   let currentSelection = {
     garmentId: 'alpaca-sweater',
     colorIdx: 0,
-    size: 'M',
-    closetOpen: true
+    size: 'M'
   };
 
-  // Carrito inicial
+  // Carrito de compras inicial
   let cart = [
     {
       id: 'alpaca-sweater-Terracota Andino-M',
@@ -115,31 +116,25 @@ document.addEventListener('DOMContentLoaded', () => {
   ];
 
   // --------------------------------------------------------------------------
-  // 2. Elementos DOM
+  // 2. Elementos del DOM
   // --------------------------------------------------------------------------
   const modelFittingImg = document.getElementById('modelFittingImg');
-  const stageGarmentTitle = document.getElementById('stageGarmentTitle');
-  const stageGarmentCraft = document.getElementById('stageGarmentCraft');
-  const stageGarmentPrice = document.getElementById('stageGarmentPrice');
-  const pillActiveGarment = document.getElementById('pillActiveGarment');
-  const pillActiveColor = document.getElementById('pillActiveColor');
-  const pillActiveSize = document.getElementById('pillActiveSize');
+  const modelTitleDisplay = document.getElementById('modelTitleDisplay');
+  const modelCraftDisplay = document.getElementById('modelCraftDisplay');
+  const modelPriceDisplay = document.getElementById('modelPriceDisplay');
 
-  // Armario Cabinet
-  const walkinClosetCabinet = document.getElementById('walkinClosetCabinet');
-  const closetHangersRail = document.getElementById('closetHangersRail');
-  const btnFoldCloset = document.getElementById('btnFoldCloset');
-  const btnReopenCloset = document.getElementById('btnReopenCloset');
-  const btnHeaderToggleCloset = document.getElementById('btnHeaderToggleCloset');
+  // Panel derecho de personalización
+  const customizerTag = document.getElementById('customizerTag');
+  const customizerTitle = document.getElementById('customizerTitle');
+  const customizerPrice = document.getElementById('customizerPrice');
+  const customizerDesc = document.getElementById('customizerDesc');
+  const wardrobeThumbnails = document.getElementById('wardrobeThumbnails');
+  const colorSwatchesContainer = document.getElementById('colorSwatchesContainer');
+  const colorLabelDisplay = document.getElementById('colorLabelDisplay');
+  const sizePillsContainer = document.getElementById('sizePillsContainer');
+  const btnBuyWithYape = document.getElementById('btnBuyWithYape');
 
-  // Dock debajo del Modelo
-  const dockColorLabel = document.getElementById('dockColorLabel');
-  const dockColorsPalette = document.getElementById('dockColorsPalette');
-  const dockSizesPalette = document.getElementById('dockSizesPalette');
-  const dockTailoringNote = document.getElementById('dockTailoringNote');
-  const btnDockBuyYape = document.getElementById('btnDockBuyYape');
-
-  // Carrito / Drawer
+  // Carrito / Drawer Yape
   const cartToggleBtn = document.getElementById('cartToggle');
   const cartOverlay = document.getElementById('cartOverlay');
   const closeCartBtn = document.getElementById('closeCart');
@@ -150,170 +145,135 @@ document.addEventListener('DOMContentLoaded', () => {
   const toastContainer = document.getElementById('toastContainer');
 
   // --------------------------------------------------------------------------
-  // 3. Renderizar Armario Físico con Perchas de Latón
+  // 3. Renderizar Thumbnails del Armario
   // --------------------------------------------------------------------------
-  function renderWalkinCloset() {
-    if (!closetHangersRail) return;
-    closetHangersRail.innerHTML = '';
+  function renderWardrobeThumbs() {
+    if (!wardrobeThumbnails) return;
+    wardrobeThumbnails.innerHTML = '';
 
     Object.values(closetDatabase).forEach(item => {
       const isSelected = item.id === currentSelection.garmentId;
-      const card = document.createElement('div');
-      card.className = `luxury-hanger-card ${isSelected ? 'active-in-model' : ''}`;
-      card.setAttribute('data-id', item.id);
+      const btn = document.createElement('button');
+      btn.className = `wardrobe-thumb-btn ${isSelected ? 'active' : ''}`;
+      btn.setAttribute('data-id', item.id);
 
-      card.innerHTML = `
-        <div class="brass-hanger-hook">🪝</div>
-        <div class="hanger-item-preview">
+      btn.innerHTML = `
+        <div class="wardrobe-thumb-img">
           <img src="${item.thumb}" alt="${item.name}">
         </div>
-        <div class="hanger-item-info">
-          <span class="hanger-category-tag">${item.category}</span>
-          <h4 class="hanger-garment-title">${item.name}</h4>
-          <div class="hanger-garment-price">S/. ${item.price.toLocaleString('es-PE')}.00</div>
-          <div class="hanger-action-indicator">${isSelected ? 'PUESTO EN EL MODELO ✓' : 'COLGAR EN EL MODELO &rarr;'}</div>
-        </div>
+        <span class="wardrobe-thumb-name">${item.name.split('|')[0].trim()}</span>
       `;
 
-      card.addEventListener('click', () => {
+      btn.addEventListener('click', () => {
         currentSelection.garmentId = item.id;
         currentSelection.colorIdx = 0;
         currentSelection.size = item.sizes[1] || item.sizes[0];
-
-        updateModelAndDock();
-        
-        // Auto-guardar armario suavemente
-        setClosetState(false);
-
-        showToast(`✨ Modelo vestido con: ${item.name}`);
+        updateModelAndCustomizer();
+        renderWardrobeThumbs();
+        showToast(`✨ Probador: ${item.name}`);
       });
 
-      closetHangersRail.appendChild(card);
+      wardrobeThumbnails.appendChild(btn);
     });
   }
 
-  function setClosetState(open = true) {
-    currentSelection.closetOpen = open;
-    if (!walkinClosetCabinet) return;
-
-    if (open) {
-      walkinClosetCabinet.style.display = 'flex';
-      if (btnReopenCloset) btnReopenCloset.style.display = 'none';
-      if (btnHeaderToggleCloset) btnHeaderToggleCloset.innerHTML = `<span>🚪 Guardar Armario</span>`;
-    } else {
-      walkinClosetCabinet.style.display = 'none';
-      if (btnReopenCloset) btnReopenCloset.style.display = 'inline-flex';
-      if (btnHeaderToggleCloset) btnHeaderToggleCloset.innerHTML = `<span>🚪 Abrir Armario / Cambiar Prenda</span>`;
-    }
-    renderWalkinCloset();
-  }
-
-  if (btnFoldCloset) btnFoldCloset.addEventListener('click', () => setClosetState(false));
-  if (btnReopenCloset) btnReopenCloset.addEventListener('click', () => setClosetState(true));
-  if (btnHeaderToggleCloset) btnHeaderToggleCloset.addEventListener('click', () => setClosetState(!currentSelection.closetOpen));
-
   // --------------------------------------------------------------------------
-  // 4. Actualizar Modelo en Escenario y Dock de Opciones Inferiores
+  // 4. Actualizar Vista del Modelo & Controles
   // --------------------------------------------------------------------------
-  function updateModelAndDock() {
-    const garment = closetDatabase[currentSelection.garmentId];
-    if (!garment) return;
+  function updateModelAndCustomizer() {
+    const item = closetDatabase[currentSelection.garmentId];
+    if (!item) return;
 
-    const currentColor = garment.colors[currentSelection.colorIdx] || garment.colors[0];
+    const activeColor = item.colors[currentSelection.colorIdx] || item.colors[0];
 
-    // 1. Vestir al modelo con animación suave y filtro
+    // 1. Vestir al modelo con animación suave y filtro de color
     if (modelFittingImg) {
-      modelFittingImg.style.opacity = '0.25';
+      modelFittingImg.style.opacity = '0.3';
       modelFittingImg.style.transform = 'scale(0.98)';
       setTimeout(() => {
-        modelFittingImg.src = garment.image;
-        modelFittingImg.style.filter = currentColor.filter || 'none';
+        modelFittingImg.src = item.image;
+        modelFittingImg.style.filter = activeColor.filter || 'none';
         modelFittingImg.style.opacity = '1';
         modelFittingImg.style.transform = 'scale(1)';
       }, 150);
     }
 
-    // 2. Actualizar Textos y Badges
-    if (stageGarmentTitle) stageGarmentTitle.textContent = garment.name;
-    if (stageGarmentCraft) stageGarmentCraft.textContent = garment.material;
-    if (stageGarmentPrice) stageGarmentPrice.textContent = `S/. ${garment.price.toLocaleString('es-PE')}.00`;
-    if (pillActiveGarment) pillActiveGarment.textContent = garment.name;
-    if (pillActiveColor) {
-      pillActiveColor.innerHTML = `<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${currentColor.hex};margin-right:6px;border:1px solid rgba(255,255,255,0.4);"></span> ${currentColor.name}`;
-    }
-    if (pillActiveSize) pillActiveSize.textContent = `Talla ${currentSelection.size}`;
+    // 2. Actualizar Textos
+    if (modelTitleDisplay) modelTitleDisplay.textContent = item.name;
+    if (modelCraftDisplay) modelCraftDisplay.textContent = item.material;
+    if (modelPriceDisplay) modelPriceDisplay.textContent = `S/. ${item.price.toLocaleString('es-PE')}.00`;
 
-    // 3. Renderizar Colores DEBAJO del Modelo
-    if (dockColorsPalette) {
-      dockColorsPalette.innerHTML = '';
-      if (dockColorLabel) dockColorLabel.textContent = currentColor.name;
+    if (customizerTag) customizerTag.textContent = item.category;
+    if (customizerTitle) customizerTitle.textContent = item.name;
+    if (customizerPrice) customizerPrice.textContent = `S/. ${item.price.toLocaleString('es-PE')}.00`;
+    if (customizerDesc) customizerDesc.textContent = item.desc;
+    if (colorLabelDisplay) colorLabelDisplay.textContent = activeColor.name;
 
-      garment.colors.forEach((col, idx) => {
-        const disc = document.createElement('button');
-        disc.className = `dock-color-disc ${idx === currentSelection.colorIdx ? 'active' : ''}`;
-        disc.style.backgroundColor = col.hex;
-        disc.title = col.name;
-        disc.setAttribute('aria-label', col.name);
+    // 3. Renderizar Muestras de Color
+    if (colorSwatchesContainer) {
+      colorSwatchesContainer.innerHTML = '';
+      item.colors.forEach((col, idx) => {
+        const swatch = document.createElement('button');
+        swatch.className = `swatch-circle-btn ${idx === currentSelection.colorIdx ? 'active' : ''}`;
+        swatch.style.backgroundColor = col.hex;
+        swatch.title = col.name;
+        swatch.setAttribute('aria-label', col.name);
 
-        disc.addEventListener('click', () => {
+        swatch.addEventListener('click', () => {
           currentSelection.colorIdx = idx;
-          updateModelAndDock();
-          showToast(`🎨 Tono aplicado: ${col.name}`);
+          updateModelAndCustomizer();
+          showToast(`🎨 Color aplicado: ${col.name}`);
         });
 
-        const tip = document.createElement('span');
-        tip.className = 'color-hover-tooltip';
-        tip.textContent = col.name;
-        disc.appendChild(tip);
-
-        dockColorsPalette.appendChild(disc);
+        colorSwatchesContainer.appendChild(swatch);
       });
     }
 
-    // 4. Renderizar Tallas DEBAJO del Modelo
-    if (dockSizesPalette) {
-      dockSizesPalette.innerHTML = '';
-      garment.sizes.forEach(sz => {
-        const btn = document.createElement('button');
-        btn.className = `dock-size-pill ${sz === currentSelection.size ? 'active' : ''}`;
-        btn.textContent = sz;
+    // 4. Renderizar Tallas
+    if (sizePillsContainer) {
+      sizePillsContainer.innerHTML = '';
+      item.sizes.forEach(sz => {
+        const pill = document.createElement('button');
+        pill.className = `size-pill-btn ${sz === currentSelection.size ? 'active' : ''}`;
+        pill.textContent = sz;
 
-        btn.addEventListener('click', () => {
+        pill.addEventListener('click', () => {
           currentSelection.size = sz;
-          updateModelAndDock();
-          showToast(`📏 Talla seleccionada: ${sz}`);
+          updateModelAndCustomizer();
+          showToast(`📏 Talla: ${sz}`);
         });
 
-        dockSizesPalette.appendChild(btn);
+        sizePillsContainer.appendChild(pill);
       });
     }
 
-    if (dockTailoringNote) {
-      dockTailoringNote.textContent = `Talla ${currentSelection.size} activa · Patronaje contemporáneo a 3,000 m.s.n.m. · Cajamarca.`;
+    // 5. Actualizar Botón CTA
+    if (btnBuyWithYape) {
+      btnBuyWithYape.innerHTML = `<span>COMPRAR AHORA CON YAPE (S/. ${item.price.toLocaleString('es-PE')}.00)</span> <span>⚡</span>`;
     }
   }
 
   // --------------------------------------------------------------------------
-  // 5. Botón Añadir a la Bolsa desde el Dock
+  // 5. Botón de Compra Directa con Yape
   // --------------------------------------------------------------------------
-  if (btnDockBuyYape) {
-    btnDockBuyYape.addEventListener('click', () => {
-      const garment = closetDatabase[currentSelection.garmentId];
-      const col = garment.colors[currentSelection.colorIdx];
+  if (btnBuyWithYape) {
+    btnBuyWithYape.addEventListener('click', () => {
+      const item = closetDatabase[currentSelection.garmentId];
+      const col = item.colors[currentSelection.colorIdx];
       
       addToCart({
-        id: `${garment.id}-${col.name}-${currentSelection.size}`,
-        name: garment.name,
+        id: `${item.id}-${col.name}-${currentSelection.size}`,
+        name: item.name,
         color: col.name,
         size: currentSelection.size,
-        price: garment.price,
-        image: garment.thumb
+        price: item.price,
+        image: item.thumb
       });
     });
   }
 
   // --------------------------------------------------------------------------
-  // 6. Carrito y Checkout Yape
+  // 6. Carrito / Drawer & Checkout Yape
   // --------------------------------------------------------------------------
   function showToast(message) {
     if (!toastContainer) return;
@@ -357,7 +317,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div style="text-align:center; padding: 32px 10px; color: var(--text-dim);">
           <p style="font-size: 2rem; margin-bottom: 8px;">🛍️</p>
           <p style="font-weight: 700; color: #fff; font-size: 0.9rem;">Tu bolsa está vacía</p>
-          <p style="font-size: 0.75rem; margin-top: 4px;">Abre el armario para probarte y añadir prendas.</p>
+          <p style="font-size: 0.75rem; margin-top: 4px;">Selecciona prendas del probador virtual para añadirlas.</p>
         </div>
       `;
       if (cartBadge) cartBadge.textContent = '0';
@@ -408,7 +368,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     renderCart();
     toggleCart(true);
-    showToast(`¡Añadido del Armario! ${product.name} (${product.color} / ${product.size})`);
+    showToast(`¡Añadido! ${product.name} (${product.color} / ${product.size})`);
   }
 
   // Quick Add from Catalog
@@ -444,7 +404,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Confirmar Pago Yape
+  // Confirmar Pago Yape con Supabase
   if (btnConfirmYape) {
     btnConfirmYape.addEventListener('click', async () => {
       if (cart.length === 0) {
@@ -492,7 +452,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Inicialización
-  renderWalkinCloset();
-  updateModelAndDock();
+  renderWardrobeThumbs();
+  updateModelAndCustomizer();
   renderCart();
 });
